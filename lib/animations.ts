@@ -43,8 +43,8 @@ export const createContainerVariants = (
 
 // Item variants for fade-in-up animations - optimized to prevent jumps
 export const createItemVariants = (duration = 0.6, y = 30): Variants => ({
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y,
     // Use will-change hint for better performance
   },

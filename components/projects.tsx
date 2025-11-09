@@ -5,7 +5,11 @@ import { ExternalLink, Github } from "lucide-react";
 import { IconLink } from "@/components/ui/icon-link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
-import { createContainerVariants, createItemVariants, VIEWPORT_CONFIG } from "@/lib/animations";
+import {
+  createContainerVariants,
+  createItemVariants,
+  VIEWPORT_CONFIG,
+} from "@/lib/animations";
 import { PROJECT_URLS } from "@/lib/constants";
 import { CONTAINER_CLASSES, SECTION_CLASSES } from "@/lib/styles";
 import { Card } from "./card";
