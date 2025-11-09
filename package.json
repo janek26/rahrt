@@ -8,10 +8,11 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "next start",
-    "prepare": "bun run download-avatar && bun run generate-favicons && bun run generate-og-images",
+    "prepare": "bun run download-avatar && bun run generate-favicons && bun run generate-og-images && bun run generate-header",
     "download-avatar": "bun scripts/download-avatar.ts",
     "generate-favicons": "bun scripts/generate-favicons.ts",
     "generate-og-images": "bun scripts/generate-og-images.ts",
+    "generate-header": "bun scripts/generate-og-images.ts -o docs/header.png",
     "export": "next build"
   },
   "dependencies": {

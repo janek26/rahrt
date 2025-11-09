@@ -2,7 +2,7 @@
 
 > Personal portfolio website built with Next.js, TypeScript, and Tailwind CSS
 
-![Header](./public/images/og-image.png)
+![Header](./docs/header.png)
 
 [![CI](https://github.com/janek26/rahrt/actions/workflows/ci.yml/badge.svg)](https://github.com/janek26/rahrt/actions/workflows/ci.yml)
 
@@ -74,9 +74,11 @@ bun run build
   - Generates optimized web versions (1x and 2x for retina)
   - Generates all favicon variants (circular for browser, square for app icons)
   - Generates Open Graph and Twitter preview images
+  - Generates README header image (docs/header.png)
 - `bun run download-avatar` - Download and optimize avatar image
 - `bun run generate-favicons` - Generate favicons from avatar source
 - `bun run generate-og-images` - Generate Open Graph and Twitter preview images
+- `bun run generate-header` - Generate README header image (docs/header.png)
 
 ## Project Structure
 
@@ -96,7 +98,7 @@ bun run build
 └── styles/          # Global styles
 ```
 
-**Note:** Generated files (in `public/images/`, `public/icons/`, `public/favicon.ico`, `public/site.webmanifest`, and `lib/avatar-blur.ts`) are automatically created by the `prepare` script and are ignored by git.
+**Note:** Generated files (in `public/images/`, `public/icons/`, `public/favicon.ico`, `public/site.webmanifest`, and `lib/avatar-blur.ts`) are automatically created by the `prepare` script and are ignored by git. The `docs/header.png` file is also generated but is committed to the repository for use in the README.
 
 ## Deployment
 
