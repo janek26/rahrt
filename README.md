@@ -2,9 +2,9 @@
 
 > Personal portfolio website built with Next.js, TypeScript, and Tailwind CSS
 
-![Header](./docs/header.png)
+![Header](./public/images/og-image.png)
 
-[![CI](https://github.com/janek26/rahrt.me/actions/workflows/ci.yml/badge.svg)](https://github.com/janek26/rahrt.me/actions/workflows/ci.yml)
+[![CI](https://github.com/janek26/rahrt/actions/workflows/ci.yml/badge.svg)](https://github.com/janek26/rahrt/actions/workflows/ci.yml)
 
 A modern, responsive portfolio website featuring smooth animations, dark/light theme support, and optimized static export.
 
@@ -36,7 +36,7 @@ A modern, responsive portfolio website featuring smooth animations, dark/light t
 
 ```bash
 # Clone the repository
-git clone https://github.com/janek26/rahrt.me.git
+git clone https://github.com/janek26/rahrt.git
 cd rahrt.me
 
 # Install dependencies (automatically generates assets via prepare script)
