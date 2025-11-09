@@ -28,7 +28,7 @@ export function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="border-border/40 bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md"
+      className="border-border/40 bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md transition-colors duration-300"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-end px-6 py-4">
         {mounted && (
