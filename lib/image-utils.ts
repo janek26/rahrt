@@ -63,4 +63,3 @@ export const generateBlurDataURL = async (
   const base64 = resized.toString("base64");
   return `data:image/jpeg;base64,${base64}`;
 };
-

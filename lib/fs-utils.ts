@@ -21,4 +21,3 @@ export const ensureDirectories = async (
 ): Promise<void> => {
   await Promise.all(dirPaths.map((dir) => ensureDirectory(dir)));
 };
-

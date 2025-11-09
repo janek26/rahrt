@@ -26,4 +26,3 @@ export const runScript = async (
     handleScriptError(scriptName, error);
   }
 };
-

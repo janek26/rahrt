@@ -6,18 +6,18 @@
 import { existsSync } from "fs";
 import { writeFile } from "fs/promises";
 import sharp from "sharp";
-import { withProgressBar, incrementStep, updateStep } from "../lib/progress";
-import {
-  AVATAR_SOURCE_PATH,
-  PUBLIC_DIR,
-  ICONS_DIR,
-  FAVICON_ICO_PATH,
-  APPLE_TOUCH_ICON_PATH,
-  WEBMANIFEST_PATH,
-} from "../lib/paths";
+import { runScript } from "../lib/error-handler";
 import { ensureDirectory } from "../lib/fs-utils";
 import { createCircularIcon, createSquareIcon } from "../lib/image-utils";
-import { runScript } from "../lib/error-handler";
+import {
+  APPLE_TOUCH_ICON_PATH,
+  AVATAR_SOURCE_PATH,
+  FAVICON_ICO_PATH,
+  ICONS_DIR,
+  PUBLIC_DIR,
+  WEBMANIFEST_PATH,
+} from "../lib/paths";
+import { incrementStep, updateStep, withProgressBar } from "../lib/progress";
 
 const SIZES = [16, 32, 96, 192, 512];
 
@@ -50,7 +50,10 @@ async function generateFavicons() {
       for (const size of SIZES) {
         updateStep(bar, `favicon-${size}px`);
         const circularIcon = await createCircularIcon(imageBuffer, size);
-        await writeFile(`${ICONS_DIR}/favicon-${size}x${size}.png`, circularIcon);
+        await writeFile(
+          `${ICONS_DIR}/favicon-${size}x${size}.png`,
+          circularIcon
+        );
         incrementStep(bar);
       }
 

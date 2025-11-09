@@ -6,18 +6,18 @@
  */
 import { writeFile } from "fs/promises";
 import sharp from "sharp";
-import { withProgressBar, incrementStep, updateStep } from "../lib/progress";
-import {
-  AVATAR_SOURCE_PATH,
-  AVATAR_1X_PATH,
-  AVATAR_2X_PATH,
-  IMAGES_DIR,
-  LIB_DIR,
-  BLUR_DATA_PATH,
-} from "../lib/paths";
+import { runScript } from "../lib/error-handler";
 import { ensureDirectories } from "../lib/fs-utils";
 import { generateBlurDataURL } from "../lib/image-utils";
-import { runScript } from "../lib/error-handler";
+import {
+  AVATAR_1X_PATH,
+  AVATAR_2X_PATH,
+  AVATAR_SOURCE_PATH,
+  BLUR_DATA_PATH,
+  IMAGES_DIR,
+  LIB_DIR,
+} from "../lib/paths";
+import { incrementStep, updateStep, withProgressBar } from "../lib/progress";
 
 // Download high-resolution source (512x512 for best quality)
 const GITHUB_AVATAR_URL =

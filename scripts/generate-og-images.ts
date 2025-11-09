@@ -10,12 +10,12 @@
  */
 import { writeFile } from "fs/promises";
 import { dirname } from "path";
-import sharp from "sharp";
 import type cliProgress from "cli-progress";
-import { withProgressBar, incrementStep, updateStep } from "../lib/progress";
-import { AVATAR_SOURCE_PATH, OG_IMAGE_PATH } from "../lib/paths";
-import { ensureDirectory } from "../lib/fs-utils";
+import sharp from "sharp";
 import { runScript } from "../lib/error-handler";
+import { ensureDirectory } from "../lib/fs-utils";
+import { AVATAR_SOURCE_PATH, OG_IMAGE_PATH } from "../lib/paths";
+import { incrementStep, updateStep, withProgressBar } from "../lib/progress";
 
 /**
  * Generates a preview image with avatar, name, and tags
