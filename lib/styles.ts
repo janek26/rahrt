@@ -13,27 +13,26 @@ export const DISPLAY_FONT_STYLE = {
 
 // Tag/Badge styles
 export const TAG_CLASSES =
-  "px-3 py-1 rounded-full text-xs bg-accent/10 text-accent/80 font-medium border border-accent/30 hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 cursor-default";
+  "px-3 py-1 rounded-full text-xs bg-accent/10 text-accent/80 font-medium border border-accent/30 hover:bg-accent/20 hover:border-accent/50 cursor-default";
 
 export const TAG_CLASSES_SM =
-  "px-3 py-1 rounded-full text-sm bg-accent/10 text-accent font-medium border border-accent/30 hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 cursor-default";
+  "px-3 py-1 rounded-full text-sm bg-accent/10 text-accent font-medium border border-accent/30 hover:bg-accent/20 hover:border-accent/50 cursor-default";
 
 export const TECH_TAG_CLASSES =
-  "px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/30 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 cursor-default";
+  "px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/30 hover:bg-primary/20 hover:border-primary/50 cursor-default";
 
 // Icon link styles
-export const ICON_LINK_CLASSES =
-  "p-2 rounded-lg hover:bg-accent/10 transition-all duration-300 group";
+export const ICON_LINK_CLASSES = "p-2 rounded-lg hover:bg-accent/10 group";
 
 export const ICON_LINK_CLASSES_SECONDARY =
-  "p-2 rounded-lg hover:bg-secondary/50 transition-all duration-300 group/link";
+  "p-2 rounded-lg hover:bg-secondary/50 group/link";
 
 export const ICON_LINK_CLASSES_ACCENT =
-  "p-2 rounded-lg hover:bg-accent/20 transition-all duration-300 group/link";
+  "p-2 rounded-lg hover:bg-accent/20 group/link";
 
 // Button styles
 export const BUTTON_PRIMARY_CLASSES =
-  "inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group";
+  "inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:shadow-xl hover:shadow-primary/25 group";
 
 export const BUTTON_SECONDARY_CLASSES =
-  "inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 transition-all font-semibold";
+  "inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 font-semibold";
