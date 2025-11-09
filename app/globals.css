@@ -219,3 +219,13 @@ html {
 .glow-pulse {
   animation: glow-pulse 3s ease-in-out infinite;
 }
+
+/* Safe area insets for iOS notch/dynamic island in PWA mode */
+@supports (padding: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
 import { About } from "@/components/about";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -10,17 +9,15 @@ import { Speakers } from "@/components/speakers";
 
 export default function Home() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
-        <Header />
-        <main className="relative">
-          <Hero />
-          <Projects />
-          <Speakers />
-          <About />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
+      <Header />
+      <main className="relative">
+        <Hero />
+        <Projects />
+        <Speakers />
+        <About />
+      </main>
+      <Footer />
+    </div>
   );
 }
