@@ -10,7 +10,10 @@ export const CONTACT_EMAIL = "hello@rahrt.me";
 export const GITHUB_AVATAR_URL = "/images/avatar.jpg";
 
 // Project URLs
-export const PROJECT_URLS = {
+export const PROJECT_URLS: Record<
+  "argentX" | "vesu" | "starknetJs" | "viem" | "rainbow",
+  { github?: string; external: string }
+> = {
   argentX: {
     github: "https://github.com/argentlabs/argent-x",
     external: "https://www.argent.xyz/argent-x",
@@ -30,18 +33,7 @@ export const PROJECT_URLS = {
     github: "https://github.com/rainbow-me/browser-extension",
     external: "https://rainbow.me",
   },
-} as const;
-
-// Tech stack
-export const TECH_STACK = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Smart Contracts",
-  "Web3",
-  "Starknet",
-  "Cairo",
-] as const;
+};
 
 // Hero badges
 export const HERO_BADGES = [

@@ -1,7 +1,6 @@
 // Common style classes
 export const SECTION_CLASSES = "py-20 px-6";
 export const CONTAINER_CLASSES = "max-w-6xl mx-auto";
-export const CONTAINER_CLASSES_LG = "max-w-7xl mx-auto";
 export const CONTAINER_CLASSES_MD = "max-w-4xl mx-auto";
 
 // Heading styles
@@ -17,9 +16,6 @@ export const TAG_CLASSES =
 
 export const TAG_CLASSES_SM =
   "px-3 py-1 rounded-full text-sm bg-accent/10 text-accent font-medium border border-accent/30 hover:bg-accent/20 hover:border-accent/50 cursor-default";
-
-export const TECH_TAG_CLASSES =
-  "px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/30 hover:bg-primary/20 hover:border-primary/50 cursor-default";
 
 // Icon link styles
 export const ICON_LINK_CLASSES = "p-2 rounded-lg hover:bg-accent/10 group";

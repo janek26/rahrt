@@ -5,7 +5,6 @@ import { ExternalLink, Github } from "lucide-react";
 import { IconLink } from "@/components/ui/icon-link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
-import { createContainerVariants, createItemVariants } from "@/lib/animations";
 import { PROJECT_URLS } from "@/lib/constants";
 import { CONTAINER_CLASSES, SECTION_CLASSES } from "@/lib/styles";
 import { Card } from "./card";
@@ -58,9 +57,6 @@ const projects = [
   },
 ];
 
-const containerVariants = createContainerVariants(0.1, 0.1);
-const itemVariants = createItemVariants();
-
 export function Projects() {
   return (
     <section id="projects" className={`${SECTION_CLASSES} relative`}>
@@ -70,61 +66,67 @@ export function Projects() {
           subtitle="Projects I've initiated, developed, and contributed to"
         />
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid gap-6"
-        >
+        <div className="grid gap-6">
           {projects.map((project, idx) => (
-            <Card key={idx} variants={itemVariants}>
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="mb-1 text-xl font-bold">{project.title}</h3>
-                  <div className="flex items-center gap-3">
-                    <p className="text-primary text-sm font-medium">
-                      {project.role}
-                    </p>
-                    <span className="bg-accent/20 text-accent rounded-md px-2 py-1 text-xs font-semibold">
-                      {project.focus}
-                    </span>
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+              transition={{
+                duration: 0.6,
+                delay: idx * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Card>
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="mb-1 text-xl font-bold">{project.title}</h3>
+                    <div className="flex items-center gap-3">
+                      <p className="text-primary text-sm font-medium">
+                        {project.role}
+                      </p>
+                      <span className="bg-accent/20 text-accent rounded-md px-2 py-1 text-xs font-semibold">
+                        {project.focus}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    {project.links.github && (
+                      <IconLink
+                        href={project.links.github}
+                        icon={Github}
+                        label="GitHub"
+                        variant="accent"
+                        iconClassName="w-4 h-4"
+                      />
+                    )}
+                    {project.links.external && (
+                      <IconLink
+                        href={project.links.external}
+                        icon={ExternalLink}
+                        label="Visit site"
+                        variant="accent"
+                        iconClassName="w-4 h-4"
+                      />
+                    )}
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  {project.links.github && (
-                    <IconLink
-                      href={project.links.github}
-                      icon={Github}
-                      label="GitHub"
-                      variant="accent"
-                      iconClassName="w-4 h-4"
-                    />
-                  )}
-                  {project.links.external && (
-                    <IconLink
-                      href={project.links.external}
-                      icon={ExternalLink}
-                      label="Visit site"
-                      variant="accent"
-                      iconClassName="w-4 h-4"
-                    />
-                  )}
+
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
                 </div>
-              </div>
-
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -25,7 +25,7 @@ const itemVariants = createItemVariants(0.8);
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32 pb-20">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-22 pb-20 md:pt-32">
       <div className="absolute inset-0 -z-10">
         <div className="from-primary/5 to-accent/5 gradient-animate absolute inset-0 bg-linear-to-br via-transparent" />
         <motion.div
@@ -130,7 +130,7 @@ export function Hero() {
               whileHover={HOVER_SCALE}
               whileTap={TAP_SCALE}
               transition={SPRING_TRANSITION}
-              className="border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/40 cursor-default rounded-lg border p-3 transition-all duration-300"
+              className="border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/40 cursor-default rounded-lg border p-3"
             >
               <p className="text-foreground text-sm font-medium">
                 {item.label}

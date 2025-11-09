@@ -53,7 +53,6 @@ export const createItemVariants = (duration = 0.6, y = 30): Variants => ({
 // Common hover animations
 export const HOVER_SCALE = { scale: 1.05, y: -2 };
 export const HOVER_ICON = { scale: 1.2, y: -5, rotate: 5 };
-export const HOVER_CARD = { y: -8, scale: 1.01 };
 export const TAP_SCALE = { scale: 0.98 };
 
 // Common initial animations

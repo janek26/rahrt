@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Tag } from "@/components/ui/tag";
 import { FADE_IN_UP } from "@/lib/animations";
-import { TECH_STACK } from "@/lib/constants";
 import {
   CONTAINER_CLASSES,
   DISPLAY_FONT_STYLE,
@@ -50,23 +48,6 @@ export function About() {
                 contract integration, and full-stack development.
               </p>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="border-border/50 mt-8 space-y-3 border-t pt-8"
-            >
-              <h3 className="text-foreground font-semibold">Tech Stack</h3>
-              <div className="flex flex-wrap gap-2">
-                {TECH_STACK.map((tech) => (
-                  <Tag key={tech} variant="tech">
-                    {tech}
-                  </Tag>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div

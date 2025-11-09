@@ -157,7 +157,7 @@ export function Footer() {
                       : undefined
                   }
                   whileTap={{ scale: CONFIG.scale.tap }}
-                  className={`${ICON_LINK_CLASSES} border-border/50 hover:border-accent/50 bg-background/50 hover:bg-accent/10 group relative inline-flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 transition-all duration-200`}
+                  className={`${ICON_LINK_CLASSES} border-border/50 hover:border-accent/50 bg-background/50 hover:bg-accent/10 group relative inline-flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2`}
                 >
                   {/* Background color overlay */}
                   <motion.div
@@ -197,7 +197,7 @@ export function Footer() {
                     className="relative"
                   >
                     {/* Base icon */}
-                    <Github className="text-foreground/70 group-hover:text-accent relative z-10 h-4 w-4 transition-colors duration-200" />
+                    <Github className="text-foreground/70 group-hover:text-accent relative z-10 h-4 w-4" />
 
                     {/* Colored icon overlay */}
                     <motion.div
@@ -225,7 +225,7 @@ export function Footer() {
                   </motion.div>
 
                   {/* Text */}
-                  <span className="text-muted-foreground/70 group-hover:text-foreground relative text-xs font-medium transition-colors duration-200">
+                  <span className="text-muted-foreground/70 group-hover:text-foreground relative text-xs font-medium">
                     <span className="relative z-10">Open Source</span>
                     {/* Colored text overlay */}
                     <motion.span

@@ -28,7 +28,7 @@ export function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="border-border/40 bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md transition-colors duration-300"
+      className="border-border/40 bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-end px-6 py-4">
         {mounted && (
@@ -36,7 +36,7 @@ export function Header() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={toggleTheme}
-            className="bg-secondary/50 hover:bg-secondary relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg p-2 transition-all duration-300 hover:shadow-lg"
+            className="bg-secondary/50 hover:bg-secondary relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg p-2 hover:shadow-lg"
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait">

@@ -47,7 +47,7 @@ export function IconLink({
       title={label}
     >
       <Icon
-        className={`text-foreground/70 group-hover:text-accent h-5 w-5 transition-colors duration-300 ${iconClassName}`}
+        className={`text-foreground/70 group-hover:text-accent h-5 w-5 ${iconClassName}`}
       />
     </motion.a>
   );
