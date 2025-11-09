@@ -124,7 +124,7 @@ export function Footer() {
                   whileInView={{
                     scale: [1, CONFIG.scale.peak, CONFIG.scale.peak, 1],
                   }}
-                  viewport={{ once: true }}
+                  viewport={VIEWPORT_CONFIG}
                   animate={
                     hasCompletedInitialAnimation ? { scale: 1 } : undefined
                   }
@@ -171,7 +171,7 @@ export function Footer() {
                         0,
                       ],
                     }}
-                    viewport={{ once: true }}
+                    viewport={VIEWPORT_CONFIG}
                     transition={{
                       delay: CONFIG.phases.startDelay,
                       duration: TOTAL_DURATION,
@@ -187,7 +187,7 @@ export function Footer() {
                     whileInView={{
                       rotate: [...CONFIG.rotation.icon],
                     }}
-                    viewport={{ once: true }}
+                    viewport={VIEWPORT_CONFIG}
                     transition={{
                       delay:
                         CONFIG.phases.startDelay + CONFIG.phases.growAndColor,
@@ -211,7 +211,7 @@ export function Footer() {
                           0,
                         ],
                       }}
-                      viewport={{ once: true }}
+                      viewport={VIEWPORT_CONFIG}
                       transition={{
                         delay: CONFIG.phases.startDelay,
                         duration: TOTAL_DURATION,
@@ -239,7 +239,7 @@ export function Footer() {
                           0,
                         ],
                       }}
-                      viewport={{ once: true }}
+                      viewport={VIEWPORT_CONFIG}
                       transition={{
                         delay: CONFIG.phases.startDelay,
                         duration: TOTAL_DURATION,
@@ -270,8 +270,8 @@ export function Footer() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4, type: "tween" }}
+          viewport={VIEWPORT_CONFIG}
           className="text-muted-foreground/70 text-xs"
         >
           © {currentYear} Janek. Built with Next.js, React, and Framer Motion.

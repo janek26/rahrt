@@ -16,7 +16,6 @@ export function Card({ children, className = "", variants }: CardProps) {
       whileHover={{ y: -8, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`group border-border/50 from-card/50 to-card/30 hover:from-card hover:to-card/50 hover:border-accent/50 hover:shadow-accent/10 rounded-lg border bg-linear-to-br p-6 transition-all duration-500 hover:shadow-xl ${className}`}
-      style={{ willChange: "transform" }}
     >
       {children}
     </motion.div>

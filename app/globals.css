@@ -138,6 +138,14 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* Optimize animations for GPU acceleration and prevent layout shifts */
+.motion-safe {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
 /* Better focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--ring);

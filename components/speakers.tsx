@@ -9,6 +9,7 @@ import {
   createContainerVariants,
   createItemVariants,
   SPRING_TRANSITION,
+  VIEWPORT_CONFIG,
 } from "@/lib/animations";
 import { CONTAINER_CLASSES, SECTION_CLASSES } from "@/lib/styles";
 import { Card } from "./card";
@@ -53,7 +54,7 @@ export function Speakers() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={VIEWPORT_CONFIG}
           className="grid gap-6"
         >
           {talks.map((talk, idx) => (

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Tag } from "@/components/ui/tag";
-import { FADE_IN_UP } from "@/lib/animations";
+import { FADE_IN_UP, VIEWPORT_CONFIG } from "@/lib/animations";
 import { TECH_STACK } from "@/lib/constants";
 import {
   CONTAINER_CLASSES,
@@ -20,8 +20,8 @@ export function About() {
         >
           <motion.div
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, type: "tween" }}
+            viewport={VIEWPORT_CONFIG}
           >
             <h2
               className="mb-6 text-4xl font-bold tracking-tight md:text-5xl"
@@ -54,8 +54,8 @@ export function About() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, type: "tween" }}
+              viewport={VIEWPORT_CONFIG}
               className="border-border/50 mt-8 space-y-3 border-t pt-8"
             >
               <h3 className="text-foreground font-semibold">Tech Stack</h3>
@@ -71,8 +71,8 @@ export function About() {
 
           <motion.div
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, type: "tween" }}
+            viewport={VIEWPORT_CONFIG}
             className="from-primary/10 via-accent/5 border-border/50 rounded-lg border bg-linear-to-br to-transparent p-8"
           >
             <div className="space-y-6">

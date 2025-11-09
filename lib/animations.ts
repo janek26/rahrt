@@ -14,12 +14,14 @@ export const SPRING_TRANSITION: Transition = {
 export const FADE_IN_TRANSITION: Transition = {
   duration: 0.6,
   ease: EASE_CURVE,
+  type: "tween", // Ensure smooth completion without jumps
 };
 
-// Viewport configuration for scroll animations
+// Viewport configuration for scroll animations - optimized for performance
 export const VIEWPORT_CONFIG = {
   once: true,
   margin: "-100px",
+  amount: 0.2, // Trigger when 20% visible for better performance
 } as const;
 
 // Container variants for staggered animations
@@ -33,19 +35,27 @@ export const createContainerVariants = (
     transition: {
       staggerChildren,
       delayChildren,
+      // Ensure smooth completion without jumps
+      when: "beforeChildren",
     },
   },
 });
 
-// Item variants for fade-in-up animations
+// Item variants for fade-in-up animations - optimized to prevent jumps
 export const createItemVariants = (duration = 0.6, y = 30): Variants => ({
-  hidden: { opacity: 0, y },
+  hidden: { 
+    opacity: 0, 
+    y,
+    // Use will-change hint for better performance
+  },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration,
       ease: EASE_CURVE,
+      // Ensure final state is maintained smoothly
+      type: "tween",
     },
   },
 });
