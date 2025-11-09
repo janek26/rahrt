@@ -1,15 +1,18 @@
 {
-  "name": "my-v0-project",
+  "name": "rahrt.me",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "next start",
-    "download-avatar": "bun scripts/download-avatar.ts"
+    "prepare": "bun run download-avatar && bun run generate-favicons && bun run generate-og-images",
+    "download-avatar": "bun scripts/download-avatar.ts",
+    "generate-favicons": "bun scripts/generate-favicons.ts",
+    "generate-og-images": "bun scripts/generate-og-images.ts",
+    "export": "next build"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

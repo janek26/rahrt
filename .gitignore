@@ -21,7 +21,7 @@ next-env.d.ts
 /dist
 
 # Misc
-.DS_Store
+**/.DS_Store
 *.pem
 
 # Debug
@@ -115,7 +115,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -144,6 +143,16 @@ temp/
 
 # Sentry
 .sentryclirc
+
+# Generated assets
+/public/images/og-image.png
+/public/favicon.ico
+/public/icons/
+/public/site.webmanifest
+/lib/avatar-blur.ts
+/public/images/avatar.jpg
+/public/images/avatar@2x.jpg
+/public/images/avatar-source.jpg
 
 # PWA files
 **/public/sw.js

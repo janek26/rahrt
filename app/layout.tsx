@@ -18,27 +18,109 @@ const spaceGrotesk = Space_Grotesk({
   preload: true,
 });
 
+const siteUrl = "https://rahrt.me";
+const siteName = "rahrt.me";
+const siteDescription =
+  "Senior developer specializing in Web3, full-stack development, and open-source contributions. Building infrastructure and libraries for the web3 ecosystem.";
+const twitterHandle = "@0xjanek";
+
 export const metadata: Metadata = {
-  title: "Janek - Web3 & Full-Stack Developer",
-  description:
-    "Senior developer specializing in Web3, full-stack development, and open-source contributions. Building Argent X, Vesu, starknet.js and more.",
-  generator: "v0.app",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Janek - Web3 & Full-Stack Developer",
+    template: "%s | rahrt.me",
+  },
+  description: siteDescription,
+  keywords: [
+    "web3",
+    "blockchain",
+    "starknet",
+    "ethereum",
+    "typescript",
+    "react",
+    "next.js",
+    "open source",
+    "developer",
+    "full stack",
+  ],
+  authors: [{ name: "Janek", url: "https://github.com/janek26" }],
+  creator: "Janek",
+  publisher: "Janek",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/icons/favicon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/icons/favicon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: [
+      {
+        url: "/icons/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        url: "/favicon.ico",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: siteName,
+    title: "Janek - Web3 & Full-Stack Developer",
+    description: siteDescription,
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Janek - Web3 Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Janek - Web3 & Full-Stack Developer",
+    description: siteDescription,
+    creator: twitterHandle,
+    images: ["/images/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your verification codes here if needed
+    // google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
   },
 };
 

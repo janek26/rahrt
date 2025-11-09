@@ -12,12 +12,13 @@ import {
   TAP_SCALE,
 } from "@/lib/animations";
 import { AVATAR_BLUR_DATA_URL } from "@/lib/avatar-blur";
-import { GITHUB_AVATAR_URL, HERO_BADGES, SOCIAL_LINKS } from "@/lib/constants";
+import { HERO_BADGES, SOCIAL_LINKS } from "@/lib/constants";
 import {
   BUTTON_PRIMARY_CLASSES,
   BUTTON_SECONDARY_CLASSES,
   CONTAINER_CLASSES_MD,
 } from "@/lib/styles";
+import avatarImage from "@/public/images/avatar-source.jpg";
 
 const containerVariants = createContainerVariants();
 const itemVariants = createItemVariants(0.8);
@@ -66,7 +67,7 @@ export function Hero() {
             }}
           >
             <Image
-              src={GITHUB_AVATAR_URL}
+              src={avatarImage}
               alt="Janek"
               width={64}
               height={64}
