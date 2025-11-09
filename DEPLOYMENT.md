@@ -15,6 +15,8 @@ This guide explains how to deploy rahrt.me to GitHub Pages with a custom domain.
 3. Under **Source**, select **GitHub Actions**
 4. Save the settings
 
+**Note:** The workflow will automatically enable GitHub Pages using the `enablement: true` parameter in the `configure-pages` action, so manual configuration may not be necessary.
+
 ## Step 2: Configure Custom Domain
 
 ### Option A: Using GitHub Pages Settings (Recommended)
