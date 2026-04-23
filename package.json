@@ -8,11 +8,12 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "next start",
-    "prepare": "bun run download-avatar && bun run generate-favicons && bun run generate-og-images && bun run generate-header",
+    "prepare": "bun run download-avatar && bun run generate-favicons && bun run generate-og-images && bun run generate-header && bun run generate-cv",
     "download-avatar": "bun scripts/download-avatar.ts",
     "generate-favicons": "bun scripts/generate-favicons.ts",
     "generate-og-images": "bun scripts/generate-og-images.ts",
     "generate-header": "bun scripts/generate-og-images.ts -o docs/header.png",
+    "generate-cv": "bun scripts/generate-cv.ts",
     "export": "next build"
   },
   "dependencies": {
@@ -78,6 +79,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "cli-progress": "^3.12.0",
+    "playwright": "^1.59.1",
     "postcss": "^8.5",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",

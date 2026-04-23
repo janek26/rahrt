@@ -153,6 +153,7 @@ temp/
 /public/images/avatar.jpg
 /public/images/avatar@2x.jpg
 /public/images/avatar-source.jpg
+/public/cv.pdf
 
 # PWA files
 **/public/sw.js
