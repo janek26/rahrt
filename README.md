@@ -177,6 +177,124 @@ Add the server as a local MCP command:
 If a client supports remote Streamable HTTP MCP servers, run the server with
 `MCP_TRANSPORT=http` and connect it to `https://your-host.example/mcp`.
 
+### Hosted setup (Railway MCP URL)
+
+Use this hosted MCP endpoint:
+
+- `https://rahrt-portfolio-mcp-production.up.railway.app/mcp`
+
+#### Cursor (remote MCP)
+
+Add to `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+    }
+  }
+}
+```
+
+With API key auth enabled on the server:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "headers": {
+        "x-api-key": "${env:MCP_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+#### OpenCode (remote MCP)
+
+Add to `opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "janek-portfolio": {
+      "type": "remote",
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "enabled": true
+    }
+  }
+}
+```
+
+With API key auth:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "janek-portfolio": {
+      "type": "remote",
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "x-api-key": "{env:MCP_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+#### Claude Code (via `mcp-remote`)
+
+```bash
+claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp
+```
+
+#### Claude Desktop (via `mcp-remote`)
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+      ]
+    }
+  }
+}
+```
+
+#### VS Code extensions (Cline / Roo Code style)
+
+Use a stdio bridge command:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+      ]
+    }
+  }
+}
+```
+
+For additional deployment and client setup details, see
+[deploy.md](./deploy.md).
+
 ## Project Structure
 
 ```
