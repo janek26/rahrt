@@ -25,6 +25,8 @@ A modern, responsive portfolio website featuring smooth animations, dark/light t
 - [Tailwind CSS v4](https://tailwindcss.com/) - Styling
 - [Framer Motion](https://www.framer.com/motion/) - Animations
 - [Bun](https://bun.sh/) - Fast package manager and runtime
+- [MCP Framework](https://www.mcp-framework.com/) - TypeScript Model Context Protocol server
+- [Resend](https://resend.com/) - Email delivery for MCP contact requests
 
 ## Getting Started
 
@@ -79,6 +81,101 @@ bun run build
 - `bun run generate-favicons` - Generate favicons from avatar source
 - `bun run generate-og-images` - Generate Open Graph and Twitter preview images
 - `bun run generate-header` - Generate README header image (docs/header.png)
+- `bun run mcp:build` - Compile and validate the portfolio MCP server
+- `bun run mcp:stdio` - Run the MCP server locally over stdio
+- `bun run mcp:http` - Run the MCP server over HTTP Stream for hosted MCP clients
+- `bun run mcp:start` - Run the compiled MCP server from `mcp-server/dist`
+
+## Portfolio MCP Server
+
+This repository includes a TypeScript MCP server that lets AI tools explore my
+portfolio as structured context and, when configured, contact me through Resend.
+
+### Capabilities
+
+- Tools:
+  - `get_profile` - profile, availability, links, focus areas, and proof points
+  - `get_experience` - filterable career history and impact bullets
+  - `get_projects` - featured and open-source project lookup
+  - `get_cv` - structured or markdown CV
+  - `match_opportunity` - role/project matching with evidence and follow-up questions
+  - `contact_janek` - sends a Resend email for serious, user-approved outreach
+- Resources:
+  - `portfolio://profile`
+  - `portfolio://cv`
+  - `portfolio://projects`
+  - `portfolio://contact`
+- Prompts:
+  - `evaluate_janek_for_role`
+  - `draft_outreach_to_janek`
+
+### Local setup for AI tools
+
+Build the server first:
+
+```bash
+bun install
+bun run mcp:build
+```
+
+Use the absolute path to this checkout in your MCP client config.
+
+#### Claude Code
+
+```bash
+claude mcp add janek-portfolio -- bun /absolute/path/to/rahrt.me/mcp-server/dist/index.js
+```
+
+With contact email delivery enabled:
+
+```bash
+claude mcp add janek-portfolio \
+  -e RESEND_API_KEY=re_xxxxx \
+  -e RESEND_FROM_EMAIL="Janek MCP <mcp@your-verified-domain.com>" \
+  -e MCP_CONTACT_TO_EMAIL=hello@rahrt.me \
+  -- bun /absolute/path/to/rahrt.me/mcp-server/dist/index.js
+```
+
+#### Claude Desktop / Cursor-style JSON config
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "command": "bun",
+      "args": ["/absolute/path/to/rahrt.me/mcp-server/dist/index.js"],
+      "env": {
+        "RESEND_API_KEY": "re_xxxxx",
+        "RESEND_FROM_EMAIL": "Janek MCP <mcp@your-verified-domain.com>",
+        "MCP_CONTACT_TO_EMAIL": "hello@rahrt.me"
+      }
+    }
+  }
+}
+```
+
+#### opencode
+
+Add the server as a local MCP command:
+
+```json
+{
+  "mcp": {
+    "janek-portfolio": {
+      "type": "local",
+      "command": ["bun", "/absolute/path/to/rahrt.me/mcp-server/dist/index.js"],
+      "environment": {
+        "RESEND_API_KEY": "re_xxxxx",
+        "RESEND_FROM_EMAIL": "Janek MCP <mcp@your-verified-domain.com>",
+        "MCP_CONTACT_TO_EMAIL": "hello@rahrt.me"
+      }
+    }
+  }
+}
+```
+
+If a client supports remote Streamable HTTP MCP servers, run the server with
+`MCP_TRANSPORT=http` and connect it to `https://your-host.example/mcp`.
 
 ## Project Structure
 
@@ -87,6 +184,7 @@ bun run build
 ├── components/       # React components
 │   └── ui/          # Reusable UI components
 ├── lib/             # Shared utilities and constants
+├── mcp-server/      # Bun/TypeScript MCP server for AI tools
 ├── public/          # Static assets
 │   ├── images/      # Image assets (generated)
 │   │   ├── avatar-source.jpg  # High-res source (512x512)
@@ -103,6 +201,7 @@ bun run build
 ## Deployment
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+See [deploy.md](./deploy.md) for MCP server hosting with Docker, Railway, or a generic server.
 
 ## License
 
