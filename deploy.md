@@ -82,6 +82,137 @@ with `[Dockerfile.mcp](./Dockerfile.mcp)`.
 
 Railway provides `PORT`; the server reads it automatically.
 
+## Add the hosted MCP to popular AI tools
+
+After deployment, you can use the hosted endpoint directly:
+
+- Base URL: `https://rahrt-portfolio-mcp-production.up.railway.app`
+- MCP endpoint: `https://rahrt-portfolio-mcp-production.up.railway.app/mcp`
+- Health endpoint: `https://rahrt-portfolio-mcp-production.up.railway.app/health`
+
+If you deploy your own instance, replace the URL with your domain.
+
+### Cursor
+
+Create either:
+
+- project config: `.cursor/mcp.json`, or
+- global config: `~/.cursor/mcp.json`
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+    }
+  }
+}
+```
+
+If `MCP_API_KEY` is enabled on the server:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "headers": {
+        "x-api-key": "${env:MCP_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+### OpenCode
+
+Add to your `opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "janek-portfolio": {
+      "type": "remote",
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "enabled": true
+    }
+  }
+}
+```
+
+If API key auth is enabled:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "janek-portfolio": {
+      "type": "remote",
+      "url": "https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "x-api-key": "{env:MCP_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+### Claude Code
+
+Claude Code is commonly wired to remote MCP servers through `mcp-remote`:
+
+```bash
+claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp
+```
+
+### Claude Desktop
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+      ]
+    }
+  }
+}
+```
+
+### VS Code (Cline / Roo Code style setup)
+
+Use the extension MCP settings with a stdio bridge command:
+
+```json
+{
+  "mcpServers": {
+    "janek-portfolio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
+      ]
+    }
+  }
+}
+```
+
+### Quick smoke test in your client
+
+After adding the server, try one of these prompts:
+
+- "Use `get_profile` and summarize Janek in 5 bullet points."
+- "Use `get_projects` and show blockchain-related work."
+
 ## Generic server
 
 On a VM or long-running server:

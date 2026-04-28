@@ -9,6 +9,8 @@ RUN bun install --frozen-lockfile --ignore-scripts
 FROM deps AS build
 
 COPY mcp-server ./mcp-server
+# mcp-build invokes `npx tsc`; Bun images include `bunx` but not `npx`.
+RUN ln -sf "$(command -v bunx)" /usr/local/bin/npx
 RUN bun run mcp:build
 
 FROM oven/bun:1.3.13-alpine AS runner
