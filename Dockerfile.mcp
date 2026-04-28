@@ -1,0 +1,28 @@
+FROM oven/bun:1.3.13-alpine AS deps
+
+WORKDIR /app
+
+COPY package.json bun.lock ./
+COPY mcp-server/package.json ./mcp-server/package.json
+RUN bun install --frozen-lockfile --ignore-scripts
+
+FROM deps AS build
+
+COPY mcp-server ./mcp-server
+# mcp-build invokes `npx tsc`; Bun images include `bunx` but not `npx`.
+RUN ln -sf "$(command -v bunx)" /usr/local/bin/npx
+RUN bun run mcp:build
+
+FROM oven/bun:1.3.13-alpine AS runner
+
+WORKDIR /app
+ENV NODE_ENV=production
+ENV MCP_TRANSPORT=http
+ENV MCP_HTTP_HOST=0.0.0.0
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=build /app/mcp-server/dist ./mcp-server/dist
+COPY --from=build /app/mcp-server/package.json ./mcp-server/package.json
+
+EXPOSE 8080
+CMD ["bun", "mcp-server/dist/index.js"]

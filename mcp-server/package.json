@@ -1,0 +1,21 @@
+{
+  "name": "rahrt-portfolio-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && mcp-build",
+    "start": "bun dist/index.js",
+    "stdio": "bun src/index.ts",
+    "http": "MCP_TRANSPORT=http bun src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "mcp-framework": "^0.2.22",
+    "resend": "^6.12.2",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
