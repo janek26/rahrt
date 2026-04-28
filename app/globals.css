@@ -4,85 +4,82 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to a modern, premium gradient-friendly color palette */
-  --background: oklch(0.98 0 0);
-  --foreground: oklch(0.12 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.12 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.12 0 0);
-  --primary: oklch(0.45 0.18 280);
+  --background: oklch(0.972 0.01 72);
+  --foreground: oklch(0.18 0.02 61);
+  --card: oklch(0.99 0.006 72);
+  --card-foreground: oklch(0.18 0.02 61);
+  --popover: oklch(0.99 0.006 72);
+  --popover-foreground: oklch(0.18 0.02 61);
+  --primary: oklch(0.43 0.1 177);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.92 0.05 280);
-  --secondary-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.92 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.65 0.22 320);
-  --accent-foreground: oklch(1 0 0);
+  --secondary: oklch(0.91 0.018 72);
+  --secondary-foreground: oklch(0.18 0.02 61);
+  --muted: oklch(0.9 0.014 72);
+  --muted-foreground: oklch(0.47 0.025 61);
+  --accent: oklch(0.58 0.14 47);
+  --accent-foreground: oklch(0.99 0.006 72);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.93 0 0);
-  --input: oklch(0.93 0 0);
-  --ring: oklch(0.45 0.18 280);
-  --chart-1: oklch(0.45 0.18 280);
-  --chart-2: oklch(0.65 0.22 320);
-  --chart-3: oklch(0.75 0.15 290);
-  --chart-4: oklch(0.55 0.16 300);
-  --chart-5: oklch(0.6 0.2 310);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.12 0 0);
-  --sidebar-primary: oklch(0.45 0.18 280);
+  --border: oklch(0.84 0.018 72);
+  --input: oklch(0.84 0.018 72);
+  --ring: oklch(0.58 0.14 47);
+  --chart-1: oklch(0.43 0.1 177);
+  --chart-2: oklch(0.58 0.14 47);
+  --chart-3: oklch(0.5 0.08 61);
+  --chart-4: oklch(0.62 0.1 88);
+  --chart-5: oklch(0.38 0.06 32);
+  --radius: 1rem;
+  --sidebar: oklch(0.972 0.01 72);
+  --sidebar-foreground: oklch(0.18 0.02 61);
+  --sidebar-primary: oklch(0.43 0.1 177);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.92 0.05 280);
-  --sidebar-accent-foreground: oklch(0.12 0 0);
-  --sidebar-border: oklch(0.93 0 0);
-  --sidebar-ring: oklch(0.45 0.18 280);
+  --sidebar-accent: oklch(0.91 0.018 72);
+  --sidebar-accent-foreground: oklch(0.18 0.02 61);
+  --sidebar-border: oklch(0.84 0.018 72);
+  --sidebar-ring: oklch(0.58 0.14 47);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .dark {
-  /* Premium dark mode with vibrant accents for web3 aesthetic */
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.96 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.96 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.96 0 0);
-  --primary: oklch(0.65 0.22 280);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.18 0.06 280);
-  --secondary-foreground: oklch(0.96 0 0);
-  --muted: oklch(0.22 0 0);
-  --muted-foreground: oklch(0.68 0 0);
-  --accent: oklch(0.7 0.25 320);
-  --accent-foreground: oklch(0.08 0 0);
+  --background: oklch(0.14 0.018 61);
+  --foreground: oklch(0.92 0.025 78);
+  --card: oklch(0.18 0.018 61);
+  --card-foreground: oklch(0.92 0.025 78);
+  --popover: oklch(0.18 0.018 61);
+  --popover-foreground: oklch(0.92 0.025 78);
+  --primary: oklch(0.7 0.12 177);
+  --primary-foreground: oklch(0.12 0.018 61);
+  --secondary: oklch(0.23 0.021 61);
+  --secondary-foreground: oklch(0.92 0.025 78);
+  --muted: oklch(0.25 0.021 61);
+  --muted-foreground: oklch(0.69 0.025 78);
+  --accent: oklch(0.72 0.17 47);
+  --accent-foreground: oklch(0.12 0.018 61);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.18 0 0);
-  --input: oklch(0.18 0 0);
-  --ring: oklch(0.65 0.22 280);
-  --chart-1: oklch(0.65 0.22 280);
-  --chart-2: oklch(0.7 0.25 320);
-  --chart-3: oklch(0.6 0.2 290);
-  --chart-4: oklch(0.68 0.22 300);
-  --chart-5: oklch(0.62 0.23 310);
-  --sidebar: oklch(0.1 0 0);
-  --sidebar-foreground: oklch(0.96 0 0);
-  --sidebar-primary: oklch(0.65 0.22 280);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.18 0.06 280);
-  --sidebar-accent-foreground: oklch(0.96 0 0);
-  --sidebar-border: oklch(0.18 0 0);
-  --sidebar-ring: oklch(0.65 0.22 280);
+  --border: oklch(0.28 0.018 61);
+  --input: oklch(0.28 0.018 61);
+  --ring: oklch(0.72 0.17 47);
+  --chart-1: oklch(0.7 0.12 177);
+  --chart-2: oklch(0.72 0.17 47);
+  --chart-3: oklch(0.69 0.08 252);
+  --chart-4: oklch(0.74 0.11 88);
+  --chart-5: oklch(0.76 0.09 32);
+  --sidebar: oklch(0.14 0.018 61);
+  --sidebar-foreground: oklch(0.92 0.025 78);
+  --sidebar-primary: oklch(0.7 0.12 177);
+  --sidebar-primary-foreground: oklch(0.12 0.018 61);
+  --sidebar-accent: oklch(0.23 0.021 61);
+  --sidebar-accent-foreground: oklch(0.92 0.025 78);
+  --sidebar-border: oklch(0.28 0.018 61);
+  --sidebar-ring: oklch(0.72 0.17 47);
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-display:
-    var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
-  --font-mono:
-    ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
-    "Courier New", monospace;
+  --font-sans: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -127,15 +124,51 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(
+        circle at 8% 12%,
+        color-mix(in oklch, var(--accent) 11%, transparent),
+        transparent 32rem
+      ),
+      radial-gradient(
+        circle at 88% 2%,
+        color-mix(in oklch, var(--primary) 13%, transparent),
+        transparent 28rem
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--foreground) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        color-mix(in oklch, var(--foreground) 4%, transparent) 1px,
+        transparent 1px
+      );
+    background-size:
+      auto,
+      auto,
+      72px 72px,
+      72px 72px;
   }
 }
 
-/* Smooth scroll with better performance */
+/* Keep document scrolling native; global smooth scroll can create false wheel boundaries. */
 html {
-  scroll-behavior: smooth;
+  min-height: 100%;
+  scroll-behavior: auto;
+  scroll-padding-top: 1.5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
   text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100%;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 /* Better focus styles for accessibility */
@@ -151,9 +184,12 @@ html {
   color: var(--accent-foreground);
 }
 
-/* Smooth page transitions */
-* {
+/* Tap latency only needs to be optimized on controls, not every scroll target. */
+a,
+button,
+[role="button"] {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* Improved scrollbar styling */
@@ -174,50 +210,27 @@ html {
   background: var(--muted-foreground);
 }
 
-/* Added gradient animations for wholesome, premium feel */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.landing-surface {
+  position: relative;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+[id] {
+  scroll-margin-top: 1.5rem;
 }
 
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.5;
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
-  50% {
-    opacity: 1;
-  }
-}
-
-.gradient-animate {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.float-animation {
-  animation: float 6s ease-in-out infinite;
-}
-
-.glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
 }
 
 /* Safe area insets for iOS notch/dynamic island in PWA mode */

@@ -16,11 +16,21 @@ export function SectionHeading({
   className = "",
 }: SectionHeadingProps) {
   return (
-    <motion.div {...FADE_IN_UP} className={`mb-16 ${className}`}>
+    <motion.div
+      {...FADE_IN_UP}
+      className={`border-foreground/[0.12] mb-14 border-t pt-6 ${className}`}
+    >
+      <p className="text-accent mb-5 font-mono text-xs font-semibold tracking-[0.28em] uppercase">
+        Field Note
+      </p>
       <h2 className={SECTION_HEADING_CLASSES} style={DISPLAY_FONT_STYLE}>
         {title}
       </h2>
-      {subtitle && <p className="text-muted-foreground text-lg">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
+          {subtitle}
+        </p>
+      )}
     </motion.div>
   );
 }

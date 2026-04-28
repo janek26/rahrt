@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CvPage } from "@/components/cv/cv-page";
-import { Header } from "@/components/header";
+import { CvToolbar } from "@/components/cv/cv-toolbar";
 
 export const metadata: Metadata = {
   title: "CV",
@@ -11,25 +10,9 @@ export const metadata: Metadata = {
 
 export default function CvRoute() {
   return (
-    <>
-      <div className="print:hidden">
-        <Header
-          sticky={false}
-          showPrintButton
-          downloadHref="/cv.pdf"
-          downloadName="janek-rahrt-cv.pdf"
-          leadingContent={
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 transition-colors"
-            >
-              <span aria-hidden="true">←</span>
-              <span>Back to home</span>
-            </Link>
-          }
-        />
-      </div>
+    <div className="landing-surface bg-background text-foreground min-h-screen">
+      <CvToolbar />
       <CvPage />
-    </>
+    </div>
   );
 }

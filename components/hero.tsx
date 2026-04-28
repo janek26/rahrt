@@ -7,12 +7,11 @@ import { IconLink } from "@/components/ui/icon-link";
 import {
   createContainerVariants,
   createItemVariants,
-  HOVER_SCALE,
   SPRING_TRANSITION,
   TAP_SCALE,
 } from "@/lib/animations";
 import { AVATAR_BLUR_DATA_URL } from "@/lib/avatar-blur";
-import { HERO_BADGES, SOCIAL_LINKS } from "@/lib/constants";
+import { SOCIAL_LINKS } from "@/lib/constants";
 import {
   BUTTON_PRIMARY_CLASSES,
   BUTTON_SECONDARY_CLASSES,
@@ -23,30 +22,33 @@ import avatarImage from "@/public/images/avatar-source.jpg";
 const containerVariants = createContainerVariants();
 const itemVariants = createItemVariants(0.8);
 
+const impactMetrics = [
+  {
+    value: "300K+",
+    label: "Chrome users",
+    detail: "Built Argent X from zero",
+  },
+  {
+    value: "~115K",
+    label: "weekly downloads",
+    detail: "Co-developed starknet.js",
+  },
+  {
+    value: "$50M+",
+    label: "TVL",
+    detail: "Bootstrapped Vesu as founding engineer",
+  },
+  {
+    value: "7M+",
+    label: "MAU scale",
+    detail: "Shipped production systems at Joyn",
+  },
+] as const;
+
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-22 pb-20 md:pt-32">
-      <div className="absolute inset-0 -z-10">
-        <div className="from-primary/5 to-accent/5 gradient-animate absolute inset-0 bg-linear-to-br via-transparent" />
-        <motion.div
-          animate={{
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
-          className="bg-accent/10 absolute top-1/4 right-1/4 h-96 w-96 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Number.POSITIVE_INFINITY,
-            delay: 1,
-          }}
-          className="bg-primary/10 absolute bottom-1/4 left-1/4 h-96 w-96 rounded-full blur-3xl"
-        />
-      </div>
+    <section className="relative flex min-h-[calc(100vh-5rem)] items-center overflow-hidden px-5 pt-12 pb-20 sm:px-6 md:pt-20">
+      <div className="border-foreground/[0.08] bg-background/[0.35] pointer-events-none absolute inset-x-0 top-24 -z-10 mx-auto h-[38rem] max-w-6xl rounded-[4rem] border shadow-[0_40px_120px_rgba(0,0,0,0.08)]" />
 
       <motion.div
         variants={containerVariants}
@@ -54,128 +56,137 @@ export function Hero() {
         animate="visible"
         className={`${CONTAINER_CLASSES_MD} w-full`}
       >
-        <motion.div
-          variants={itemVariants}
-          className="mb-8 flex items-center gap-4"
-        >
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{
-              duration: 4,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-          >
-            <Image
-              src={avatarImage}
-              alt="Janek"
-              width={64}
-              height={64}
-              priority
-              placeholder="blur"
-              blurDataURL={AVATAR_BLUR_DATA_URL}
-              className="border-accent/40 h-16 w-16 rounded-full border-2 shadow-lg"
-            />
-          </motion.div>
+        <div className="grid items-end gap-12 lg:grid-cols-[1fr_24rem]">
           <div>
-            <p className="text-foreground text-lg font-semibold">janek26</p>
-            <p className="text-muted-foreground text-sm">
-              web3 • open source • building for impact
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="mb-12 space-y-6">
-          <div className="space-y-3">
-            <h1
-              className="text-5xl leading-[1.1] font-bold tracking-tight text-balance md:text-7xl lg:text-8xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Building for a{" "}
-              <span className="relative inline-block">
-                <span className="from-primary via-accent to-primary relative z-10 bg-linear-to-r bg-clip-text text-transparent">
-                  greater good
-                </span>
-                <motion.span
-                  animate={{ scaleX: [0, 1, 0] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                    delay: 0.5,
-                    ease: "easeInOut",
-                  }}
-                  className="from-primary via-accent absolute right-0 bottom-1 left-0 h-1 origin-left bg-linear-to-r to-transparent"
-                />
-              </span>
-            </h1>
-          </div>
-
-          <motion.p className="text-muted-foreground max-w-2xl text-lg leading-relaxed tracking-tight md:text-xl">
-            I build infrastructure and libraries for web3 and beyond. My focus
-            is on{" "}
-            <span className="text-foreground font-semibold">
-              open source solutions
-            </span>{" "}
-            that empower developers and advance the ecosystem.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          variants={itemVariants}
-          className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-3"
-        >
-          {HERO_BADGES.map((item, idx) => (
             <motion.div
-              key={idx}
-              whileHover={HOVER_SCALE}
-              whileTap={TAP_SCALE}
-              transition={SPRING_TRANSITION}
-              className="border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/40 cursor-default rounded-lg border p-3"
+              variants={itemVariants}
+              className="border-foreground/[0.12] bg-background/70 mb-10 inline-flex items-center gap-4 rounded-full border p-2 pr-5 shadow-[0_14px_60px_rgba(0,0,0,0.06)] backdrop-blur"
             >
-              <p className="text-foreground text-sm font-medium">
-                {item.label}
-              </p>
+              <Image
+                src={avatarImage}
+                alt="Janek"
+                width={64}
+                height={64}
+                placeholder="blur"
+                blurDataURL={AVATAR_BLUR_DATA_URL}
+                className="border-foreground/[0.15] h-14 w-14 rounded-full border object-cover grayscale-[20%]"
+              />
+              <div>
+                <p className="text-foreground font-mono text-sm font-semibold tracking-[0.12em] uppercase">
+                  janek26
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  Staff Engineer • product infrastructure • open source
+                </p>
+              </div>
             </motion.div>
-          ))}
-        </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          className="mb-16 flex flex-wrap gap-4"
-        >
-          <motion.a
-            href="#projects"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={TAP_SCALE}
-            transition={SPRING_TRANSITION}
-            className={BUTTON_PRIMARY_CLASSES}
-          >
-            explore work{" "}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </motion.a>
-          <motion.a
-            href={SOCIAL_LINKS.email}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={TAP_SCALE}
-            transition={SPRING_TRANSITION}
-            className={BUTTON_SECONDARY_CLASSES}
-          >
-            let&apos;s talk
-          </motion.a>
-        </motion.div>
+            <motion.div variants={itemVariants} className="mb-10 space-y-7">
+              <h1
+                className="max-w-4xl overflow-visible py-2 text-6xl leading-[0.94] font-medium tracking-[-0.055em] text-balance md:text-8xl lg:text-[8.75rem]"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                I build infrastructure{" "}
+                <span className="relative -mx-2 inline-block px-2">
+                  <span className="text-accent relative z-10 italic">
+                    people rely on
+                  </span>
+                  <span className="bg-accent/[0.14] absolute right-0 bottom-2 left-2 -z-0 h-5 -rotate-1 md:h-8" />
+                </span>
+              </h1>
 
-        <motion.div
-          variants={itemVariants}
-          className="border-foreground/10 flex gap-6 border-t pt-8"
-        >
-          <IconLink href={SOCIAL_LINKS.github} icon={Github} label="GitHub" />
-          <IconLink
-            href={SOCIAL_LINKS.twitter}
-            icon={Twitter}
-            label="Twitter"
-          />
-          <IconLink href={SOCIAL_LINKS.email} icon={Mail} label="Email" />
-        </motion.div>
+              <motion.p className="text-muted-foreground max-w-2xl text-xl leading-relaxed tracking-tight md:text-2xl">
+                I build user-facing products and developer infrastructure
+                end-to-end. The work has reached{" "}
+                <span className="text-foreground font-semibold">
+                  300,000+ wallet users
+                </span>{" "}
+                and{" "}
+                <span className="text-foreground font-semibold">
+                  ~115K weekly library downloads
+                </span>
+                .
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="mb-12 flex flex-wrap gap-4"
+            >
+              <motion.a
+                href="#projects"
+                whileTap={TAP_SCALE}
+                transition={SPRING_TRANSITION}
+                className={BUTTON_PRIMARY_CLASSES}
+              >
+                Explore Work{" "}
+                <ArrowRight
+                  aria-hidden="true"
+                  className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                />
+              </motion.a>
+              <motion.a
+                href={SOCIAL_LINKS.email}
+                whileTap={TAP_SCALE}
+                transition={SPRING_TRANSITION}
+                className={BUTTON_SECONDARY_CLASSES}
+              >
+                Let&apos;s Talk
+              </motion.a>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="border-foreground/10 flex gap-5 border-t pt-7"
+            >
+              <IconLink
+                href={SOCIAL_LINKS.github}
+                icon={Github}
+                label="GitHub"
+              />
+              <IconLink
+                href={SOCIAL_LINKS.twitter}
+                icon={Twitter}
+                label="Twitter"
+              />
+              <IconLink href={SOCIAL_LINKS.email} icon={Mail} label="Email" />
+            </motion.div>
+          </div>
+
+          <motion.aside
+            variants={itemVariants}
+            className="border-foreground/[0.12] bg-background/75 relative rounded-[2.5rem] border p-5 shadow-[0_22px_90px_rgba(0,0,0,0.09)] backdrop-blur"
+          >
+            <div className="border-foreground/10 mb-4 flex items-center justify-between border-b pb-4">
+              <p className="text-accent font-mono text-[0.68rem] font-semibold tracking-[0.22em] uppercase">
+                Shipped Proof
+              </p>
+              <span className="text-muted-foreground font-mono text-[0.62rem] tracking-[0.18em] uppercase">
+                Selected
+              </span>
+            </div>
+            <div className="grid grid-cols-1 gap-3">
+              {impactMetrics.map((item) => (
+                <div
+                  key={item.value}
+                  className="group/badge border-foreground/10 bg-background/80 hover:border-accent/45 hover:bg-accent/[0.08] dark:hover:border-accent/75 dark:hover:bg-accent/[0.22] flex cursor-default items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-colors duration-200 ease-out"
+                >
+                  <div>
+                    <p className="text-foreground text-2xl leading-none font-semibold tracking-[-0.04em]">
+                      {item.value}
+                    </p>
+                    <p className="text-primary mt-1 text-sm font-semibold">
+                      {item.label}
+                    </p>
+                    <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
+                      {item.detail}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.aside>
+        </div>
       </motion.div>
     </section>
   );
