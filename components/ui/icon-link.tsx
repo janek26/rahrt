@@ -44,9 +44,11 @@ export function IconLink({
       whileTap={{ scale: 0.9 }}
       transition={SPRING_TRANSITION}
       className={`${baseClasses} ${className}`}
+      aria-label={label}
       title={label}
     >
       <Icon
+        aria-hidden="true"
         className={`text-foreground/70 group-hover:text-accent h-5 w-5 ${iconClassName}`}
       />
     </motion.a>

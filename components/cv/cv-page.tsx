@@ -39,14 +39,14 @@ function renderRichText(text: string) {
 
 export function CvPage() {
   return (
-    <div className="cv-print-root text-foreground min-h-screen bg-[#ece9e2] px-4 py-8 transition-colors duration-300 sm:px-6 sm:py-10 dark:bg-[#171a20] print:min-h-0 print:bg-white print:p-0">
+    <div className="cv-print-root px-3 pt-4 pb-10 transition-colors duration-300 sm:px-6 sm:pt-5 sm:pb-12 print:min-h-0 print:bg-white print:p-0">
       <div className="cv-print-container mx-auto flex w-full max-w-5xl flex-col items-center gap-0 print:max-w-none print:gap-0">
         <article
-          className="cv-sheet relative w-full overflow-hidden border border-[#d7d1c4] bg-[#fbfaf7] print:border-0 print:bg-white"
+          className="cv-sheet relative w-full overflow-hidden border border-[#d7dde6] bg-[#fbfcfd] print:border-0 print:bg-white"
           style={{
             boxShadow:
-              "0 1px 0 rgba(30,29,26,0.05), 0 16px 34px rgba(15,16,18,0.12)",
-            filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.03))",
+              "0 1px 0 rgba(30,41,59,0.05), 0 16px 38px rgba(15,23,42,0.11)",
+            filter: "drop-shadow(0 1px 1px rgba(15,23,42,0.03))",
           }}
         >
           <div
@@ -58,7 +58,7 @@ export function CvPage() {
               mixBlendMode: "multiply",
             }}
           />
-          <div className="cv-paper-inner-shadow pointer-events-none absolute inset-[12px] shadow-[inset_0_0_10px_rgba(12,16,24,0.015)]" />
+          <div className="cv-paper-inner-shadow pointer-events-none absolute inset-[12px] shadow-[inset_0_0_10px_rgba(15,23,42,0.018)]" />
           <header className="relative px-8 pt-10 pb-6 md:px-12 print:px-7 print:pt-6 print:pb-4">
             <div className="flex flex-col justify-between gap-8 md:flex-row print:gap-5">
               <div>
@@ -68,19 +68,19 @@ export function CvPage() {
                 >
                   Janek Rahrt
                 </h1>
-                <div className="flex items-center gap-2 text-sm text-[#5f5f5a]">
+                <div className="flex items-center gap-2 text-sm text-[#5c6673]">
                   <span className="text-[#292c31]">{CV_DATA.role}</span>
                   <span>·</span>
                   <span style={{ color: CV_DATA.accent }}>
                     {CV_DATA.domain}
                   </span>
                 </div>
-                <p className="mt-2 text-xs tracking-wide text-[#6f6a62]">
+                <p className="mt-2 text-xs tracking-wide text-[#6b7280]">
                   Remote, based in Germany
                 </p>
               </div>
 
-              <div className="space-y-1 text-left text-xs text-[#5f5c56] md:text-right">
+              <div className="space-y-1 text-left text-xs text-[#5f6875] md:text-right">
                 {CV_CONTACTS.map((contact) =>
                   contact.href ? (
                     <a
@@ -107,7 +107,7 @@ export function CvPage() {
               </div>
             </div>
 
-            <div className="mt-6 border-t border-[#ddd6c8] pt-5 text-sm leading-7 tracking-[0.01em] text-[#2a2f36] print:mt-4 print:pt-3 print:text-[13px] print:leading-5">
+            <div className="mt-6 border-t border-[#dce3ea] pt-5 text-sm leading-7 tracking-[0.01em] text-[#2a2f36] print:mt-4 print:pt-3 print:text-[13px] print:leading-5">
               {renderRichText(CV_DATA.profile)}
             </div>
           </header>
@@ -137,12 +137,12 @@ export function CvPage() {
                           {experience.role}
                         </span>
                         {experience.note ? (
-                          <span className="text-xs text-[#686761] italic">
+                          <span className="text-xs text-[#687380] italic">
                             {experience.note}
                           </span>
                         ) : null}
                       </div>
-                      <p className="shrink-0 text-right text-xs leading-6 text-[#6f6a62] print:leading-5">
+                      <p className="shrink-0 text-right text-xs leading-6 text-[#6b7280] print:leading-5">
                         {experience.period}
                       </p>
                     </div>
@@ -150,7 +150,7 @@ export function CvPage() {
                       {experience.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="text-sm leading-6 tracking-[0.01em] text-[#2b3036] before:mr-2 before:font-semibold before:text-[#807b71] before:content-['›'] print:text-[12.5px] print:leading-5"
+                          className="text-sm leading-6 tracking-[0.01em] text-[#2b3036] before:mr-2 before:font-semibold before:text-[#7c8794] before:content-['›'] print:text-[12.5px] print:leading-5"
                         >
                           {renderRichText(bullet)}
                         </li>
@@ -168,7 +168,7 @@ export function CvPage() {
                   <div
                     key={item.name}
                     className={cn(
-                      "cv-print-item space-y-1 border-b border-[#e4dfd2] py-3 print:py-2",
+                      "cv-print-item space-y-1 border-b border-[#e2e8ef] py-3 print:py-2",
                       index >= 3 && "md:border-b-0"
                     )}
                   >
@@ -196,7 +196,7 @@ export function CvPage() {
               <div className="grid gap-4 md:grid-cols-5 print:gap-2">
                 {CV_DATA.skills.map((skill) => (
                   <div key={skill.area} className="cv-print-item">
-                    <h3 className="text-[10px] font-bold tracking-[0.13em] text-[#767169] uppercase">
+                    <h3 className="text-[10px] font-bold tracking-[0.13em] text-[#707b88] uppercase">
                       {skill.area}
                     </h3>
                     <p className="mt-1 text-xs leading-6 tracking-[0.01em] text-[#444b53] print:text-[11.5px] print:leading-5">
@@ -208,10 +208,10 @@ export function CvPage() {
             </section>
 
             <section className="cv-print-section">
-              <div className="grid gap-8 border-t border-[#e4dfd2] pt-8 md:grid-cols-[1.5fr_1fr_1fr] print:gap-4 print:pt-5">
+              <div className="grid gap-8 border-t border-[#e2e8ef] pt-8 md:grid-cols-[1.5fr_1fr_1fr] print:gap-4 print:pt-5">
                 {CV_DATA.footer.map((column) => (
                   <div key={column.label} className="cv-print-item">
-                    <h3 className="mb-2 text-[10px] font-bold tracking-[0.16em] text-[#767169] uppercase">
+                    <h3 className="mb-2 text-[10px] font-bold tracking-[0.16em] text-[#707b88] uppercase">
                       {column.label}
                     </h3>
                     {column.talks ? (
@@ -249,10 +249,10 @@ export function CvPage() {
 function CvSectionLabel({ title }: { title: string }) {
   return (
     <div className="cv-section-label mb-2 flex items-center gap-3 print:mb-1 print:gap-2">
-      <span className="text-[10px] font-bold tracking-[0.15em] text-[#757168] uppercase">
+      <span className="text-[10px] font-bold tracking-[0.15em] text-[#6f7a86] uppercase">
         {title}
       </span>
-      <div className="h-px flex-1 bg-[#e2dccf]" />
+      <div className="h-px flex-1 bg-[#dfe6ee]" />
     </div>
   );
 }

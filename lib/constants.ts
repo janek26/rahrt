@@ -34,13 +34,3 @@ export const PROJECT_URLS: Record<
     external: "https://rainbow.me",
   },
 };
-
-// Hero badges
-export const HERO_BADGES = [
-  { label: "Open Source", icon: "📖" },
-  { label: "Web3 Dev", icon: "⛓️" },
-  { label: "Libraries", icon: "🔧" },
-  { label: "Extensions", icon: "🔌" },
-  { label: "Impact Driven", icon: "🚀" },
-  { label: "Full Stack", icon: "🏗️" },
-] as const;

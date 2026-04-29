@@ -39,13 +39,13 @@ export function Speakers() {
       <div className={CONTAINER_CLASSES}>
         <SectionHeading
           title="Speaking & Events"
-          subtitle="sharing knowledge at major web3 and developer conferences"
+          subtitle="Public technical work, not the main proof, but useful signal"
         />
 
-        <div className="grid gap-6">
+        <div className="grid gap-5 lg:grid-cols-2">
           {talks.map((talk, idx) => (
             <motion.div
-              key={idx}
+              key={talk.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -55,50 +55,64 @@ export function Speakers() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <Card>
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="mb-1 text-xl font-bold">{talk.title}</h3>
-                    <p className="text-accent text-sm font-medium">
-                      {talk.conference}
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    {talk.video && (
-                      <motion.a
-                        href={talk.video}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.15, rotate: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={SPRING_TRANSITION}
-                        className="hover:bg-secondary/50 group/link rounded-lg p-2"
-                        title="Watch talk"
+              <Card className="flex h-full flex-col p-0">
+                <div className="flex h-full flex-col p-6">
+                  <div className="mb-8 flex items-start justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-accent mb-4 font-mono text-xs font-semibold tracking-[0.26em] uppercase">
+                        Talk 0{idx + 1}
+                      </p>
+                      <h3
+                        className="mb-3 text-4xl leading-none font-medium tracking-[-0.045em] break-words"
+                        style={{ fontFamily: "var(--font-display)" }}
                       >
-                        <Youtube className="text-accent h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {talk.links.external && (
-                      <IconLink
-                        href={talk.links.external}
-                        icon={ExternalLink}
-                        label="Visit site"
-                        variant="secondary"
-                      />
-                    )}
+                        {talk.title}
+                      </h3>
+                      <p className="text-primary text-sm font-semibold">
+                        {talk.conference}
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 gap-2">
+                      {talk.video && (
+                        <motion.a
+                          href={talk.video}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={SPRING_TRANSITION}
+                          className="group hover:border-accent/45 hover:bg-accent/[0.1] dark:hover:border-accent/75 dark:hover:bg-accent/[0.22] rounded-full border border-transparent p-2 transition-colors duration-200 ease-out"
+                          aria-label="Watch talk"
+                          title="Watch talk"
+                        >
+                          <Youtube
+                            aria-hidden="true"
+                            className="text-accent h-5 w-5"
+                          />
+                        </motion.a>
+                      )}
+                      {talk.links.external && (
+                        <IconLink
+                          href={talk.links.external}
+                          icon={ExternalLink}
+                          label="Visit site"
+                          variant="secondary"
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {talk.description}
-                </p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {talk.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {talk.tags.map((tag) => (
-                    <Tag key={tag} variant="small">
-                      {tag}
-                    </Tag>
-                  ))}
+                  <div className="border-foreground/10 mt-auto flex flex-wrap gap-2 border-t pt-6">
+                    {talk.tags.map((tag) => (
+                      <Tag key={tag} variant="small">
+                        {tag}
+                      </Tag>
+                    ))}
+                  </div>
                 </div>
               </Card>
             </motion.div>

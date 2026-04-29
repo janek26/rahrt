@@ -1,20 +1,30 @@
 import { Analytics } from "@vercel/analytics/next";
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-const inter = Inter({
+const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex-sans",
   display: "swap",
   preload: true,
 });
 
-const spaceGrotesk = Space_Grotesk({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-newsreader",
+  display: "swap",
+  preload: true,
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
   preload: true,
 });
@@ -149,8 +159,8 @@ export const viewport: Viewport = {
   userScalable: true,
   viewportFit: "cover", // Extends content into notch area for PWA
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f2e8" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1816" },
   ],
   colorScheme: "light dark",
 };
@@ -164,7 +174,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      className={`${ibmPlexSans.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}
     >
       <body className={`font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
