@@ -50,7 +50,7 @@ export const CV_DATA: CvData = {
   role: "Staff Engineer",
   domain: "Product Engineering · Crypto · Open Source",
   profile:
-    "Product-minded engineer with **8+ years** shipping user-facing products and developer infrastructure end-to-end. Built **Argent X** from scratch to **300,000+ Chrome users** and developed and lead **starknet.js** to **~115K weekly downloads**. Contributor to **Next.js** and **viem**. Bootstrapped **Vesu** to **$50M+ TVL** as founding engineer and previously shipped at **7M+ MAU** scale at Joyn. Strong in TypeScript, systems thinking, and 0-to-1 execution across AI-native workflows, enterprise-grade quality, and protocol-heavy environments.",
+    "Product-minded engineer with **8+ years** shipping user-facing products and developer infrastructure. Built **Argent X** from scratch to **300,000+ Chrome users**, lead **starknet.js** to **~115K weekly downloads**. Contributor to **Next.js** and **viem**. Bootstrapped **Vesu** to **$50M+ TVL** as founding engineer, shipped at **7M+ MAU** at Joyn. Strong in TypeScript, systems thinking, and 0-to-1 execution.",
   experiences: [
     {
       company: "Rainbow",
