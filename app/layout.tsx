@@ -32,13 +32,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 const siteUrl = "https://rahrt.me";
 const siteName = "rahrt.me";
 const siteDescription =
-  "Senior developer specializing in Web3, full-stack development, and open-source contributions. Building infrastructure and libraries for the web3 ecosystem.";
+  "Building user-facing products and developer infrastructure. Built Argent X (300K+ users), co-developed starknet.js (~115K weekly downloads), contributor to Next.js and viem.";
 const twitterHandle = "@0xjanek";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Janek - Web3 & Full-Stack Developer",
+    default: "Janek Rahrt",
     template: "%s | rahrt.me",
   },
   description: siteDescription,
@@ -109,20 +109,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: siteName,
-    title: "Janek - Web3 & Full-Stack Developer",
+    title: "Janek Rahrt",
     description: siteDescription,
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Janek - Web3 Developer",
+        alt: "Janek Rahrt",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Janek - Web3 & Full-Stack Developer",
+    title: "Janek Rahrt",
     description: siteDescription,
     creator: twitterHandle,
     images: ["/images/og-image.png"],
