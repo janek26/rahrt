@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function CvRoute() {
   return (
-    <div className="landing-surface bg-background text-foreground min-h-screen print:bg-white print:min-h-0">
+    <div className="landing-surface bg-background text-foreground min-h-screen print:min-h-0 print:bg-white">
       <CvToolbar />
       <CvPage />
     </div>
