@@ -295,11 +295,26 @@ button,
   }
 
   .cv-sheet {
-    transform: none !important;
     filter: none !important;
     box-shadow: none !important;
     width: 100% !important;
     background: #fff !important;
+  }
+
+  .cv-sheet[data-variant="ai"] .cv-ai-banner {
+    margin-bottom: 4px !important;
+  }
+
+  .cv-sheet[data-variant="ai"] .cv-content {
+    padding-top: 8px !important;
+  }
+
+  .cv-sheet[data-variant="ai"] .cv-content > :not(:last-child) {
+    margin-bottom: 8px !important;
+  }
+
+  .cv-sheet[data-variant="ai"] .cv-footer-grid {
+    grid-template-columns: 1.8fr 0.8fr 1fr !important;
   }
 
   .cv-section-label {

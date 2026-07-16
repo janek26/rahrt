@@ -87,9 +87,8 @@ function readVariant(): string {
   if (variant && CV_VARIANTS[variant]) return variant;
   return CV_VARIANT_LIST[0].id;
 }
-
 export function CvPage() {
-  const [variantId, setVariantId] = useState(CV_VARIANT_LIST[0].id);
+  const [variantId, setVariantId] = useState(() => readVariant());
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -103,6 +102,7 @@ export function CvPage() {
       <div className="cv-print-container mx-auto flex w-full max-w-5xl flex-col items-center gap-0 print:max-w-none print:gap-0">
         <CvVariantTabBar active={variantId} />
         <article
+          data-variant={variantId}
           className="cv-sheet relative w-full overflow-hidden border border-[#d7dde6] bg-[#fbfcfd] print:border-0 print:bg-white"
           style={{
             boxShadow:
@@ -173,7 +173,7 @@ export function CvPage() {
             </div>
           </header>
           {variantId === "ai" && (
-            <div className="relative mx-8 mb-6 flex items-center gap-4 rounded-xl bg-[#f4f7fb] px-5 py-3.5 md:mx-12 print:mx-7 print:mb-2 print:gap-2 print:rounded-lg print:px-4 print:py-2 print:text-[9px]">
+            <div className="cv-ai-banner relative mx-8 mb-6 flex items-center gap-4 rounded-xl bg-[#f4f7fb] px-5 py-3.5 md:mx-12 print:mx-7 print:mb-2 print:gap-2 print:rounded-lg print:px-4 print:py-2 print:text-[9px]">
               <div className="flex-1 min-w-0">
                 <p className="mb-1 font-mono text-[0.58rem] font-semibold tracking-[0.22em] uppercase text-[#6b7a8d] print:text-[7px] print:mb-0.5">
                   Ask an AI about me
@@ -231,7 +231,7 @@ export function CvPage() {
             </div>
           )}
 
-          <div className="relative space-y-8 px-8 pt-6 pb-10 md:px-12 print:space-y-3 print:px-7 print:pt-3 print:pb-3">
+          <div className="cv-content relative space-y-8 px-8 pt-6 pb-10 md:px-12 print:space-y-3 print:px-7 print:pt-3 print:pb-3">
             <CvSectionLabel title="Experience" />
             <div className="space-y-4 print:space-y-1.5">
               {data.experiences.map((experience) => (
@@ -324,7 +324,7 @@ export function CvPage() {
             </section>
 
             <section className="cv-print-section">
-              <div className="grid gap-8 border-t border-[#e2e8ef] pt-8 md:grid-cols-[1.5fr_1fr_1fr] print:gap-2.5 print:pt-2.5">
+              <div className="cv-footer-grid grid gap-8 border-t border-[#e2e8ef] pt-8 md:grid-cols-[1.5fr_1fr_1fr] print:gap-2.5 print:pt-2.5">
                 {data.footer.map((column) => (
                   <div key={column.label} className="cv-print-item">
                     <h3 className="mb-2 text-[10px] font-bold tracking-[0.16em] text-[#707b88] uppercase">

@@ -187,7 +187,7 @@ export const CV_VARIANTS: Record<string, CvData> = {
     role: "Staff Engineer, AI & Product",
     domain: "AI-Native Engineering · MCP Infrastructure · Product",
     profile:
-      "Product-minded engineer with **8+ years** shipping at scale, now operating at the frontier of **AI-native development**. Built and published **AI infrastructure** — an MCP gateway (aimux), AI-powered invoice extraction agents, and a portfolio MCP server for AI agent integration. Drives agent-driven workflows with **Cursor, Claude Code, OpenCode, and OMP** as daily tools. Deep experience in **LLM integration** (Vercel AI SDK, TanStack AI, OpenAI-compatible APIs), **MCP protocol** (built servers, federation proxies, and tool schemas), and **browser automation + AI** (Playwright, browser-use, CDP bridges). Combines systems thinking from shipping at **7M+ MAU** and **$50M+ TVL** with the velocity of AI-native engineering.",
+      "Product-minded engineer with **8+ years** shipping at scale and building **AI-native products and infrastructure**. Published an MCP gateway (aimux), AI invoice-extraction agents, and a portfolio MCP server. Uses **Cursor, Claude Code, OpenCode, and OMP** daily to drive agent-led delivery. Deep in **LLM integration**, **MCP protocol**, and **browser automation**, backed by systems shipped to **7M+ MAU** and **$50M+ TVL**.",
     experiences: [
       {
         company: "Rainbow",
@@ -279,9 +279,9 @@ export const CV_VARIANTS: Record<string, CvData> = {
       {
         label: "AI Projects",
         lines: [
-          "Built **invoice-corp** — invoice automation monorepo with browser-use + Playwright agents, Effect-based plugin engine, and Cloudflare Workers infrastructure",
-          "Built **holyway** — AI SaaS boilerplate with TanStack AI streaming chat, MCP tool integration, and Polar payments",
-          "Built **travel planner prototype** — CopilotKit + A2UI component catalog with OpenRouter Responses API integration",
+          "Built **invoice-corp** — agentic invoice automation with browser-use, Playwright, Effect, and Cloudflare Workers",
+          "Built **holyway** — AI SaaS starter with TanStack AI streaming, MCP tools, and Polar payments",
+          "Built a **travel planner prototype** with CopilotKit, A2UI, and OpenRouter Responses",
         ],
       },
       {
