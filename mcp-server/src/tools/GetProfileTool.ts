@@ -30,6 +30,10 @@ ${PORTFOLIO.profile.headline}
 
 ${PORTFOLIO.profile.summary}
 
+## Location & Languages
+- Location: ${PORTFOLIO.profile.location}
+${PORTFOLIO.profile.languages.map((l) => `- ${l.language}: ${l.level}`).join("\n")}
+
 ## Availability
 ${PORTFOLIO.profile.availability}
 
@@ -38,6 +42,9 @@ ${toMarkdownList(PORTFOLIO.profile.proofPoints)}
 
 ## Focus areas
 ${toMarkdownList(PORTFOLIO.profile.focusAreas)}
+
+## Open to
+${toMarkdownList(PORTFOLIO.profile.availableFor)}
 
 ## Contact
 - Email: ${PORTFOLIO.contact.email}

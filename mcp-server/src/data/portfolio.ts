@@ -39,6 +39,11 @@ export type ContactInfo = {
   readonly twitter: string;
 };
 
+export type Language = {
+  readonly language: string;
+  readonly level: "native" | "fluent" | "intermediate" | "basic";
+};
+
 export type PortfolioProfile = {
   readonly name: string;
   readonly handle: string;
@@ -46,6 +51,7 @@ export type PortfolioProfile = {
   readonly role: string;
   readonly domain: string;
   readonly location: string;
+  readonly languages: readonly Language[];
   readonly availability: string;
   readonly summary: string;
   readonly proofPoints: readonly string[];
@@ -74,18 +80,23 @@ export const PORTFOLIO: PortfolioData = {
     handle: "janek26",
     headline: "Building for a greater good",
     role: "Staff Engineer",
-    domain: "Product Engineering, Crypto, Open Source",
-    location: "Europe",
+    domain: "Product Engineering, Crypto, Open Source, AI-Native Tooling",
+    location: "Germany",
+    languages: [
+      { language: "German", level: "native" },
+      { language: "English", level: "fluent" },
+    ],
     availability:
-      "Available for selective freelance projects, consulting, architecture reviews, and technical mentoring.",
+      "Available for selective freelance projects, consulting, and architecture reviews. Open to compelling full-time permanent roles when the mutual fit is strong.",
     summary:
-      "Product-minded engineer with 8+ years shipping user-facing products and developer infrastructure end-to-end. Built Argent X from scratch to 300,000+ Chrome users and developed and led starknet.js to ~115K weekly downloads. Contributor to Next.js and viem. Bootstrapped Vesu to $50M+ TVL as founding engineer and previously shipped at 7M+ MAU scale at Joyn. Strong in TypeScript, systems thinking, and 0-to-1 execution across AI-native workflows, enterprise-grade quality, and protocol-heavy environments.",
+      "Product-minded engineer with 8+ years shipping user-facing products and developer infrastructure end-to-end. German native, based in Germany. Built Argent X from scratch to 300,000+ Chrome users and developed and led starknet.js to ~115K weekly downloads. Contributor to Next.js and viem. Bootstrapped Vesu to $50M+ TVL as founding engineer and previously shipped at 7M+ MAU scale at Joyn. Strong in TypeScript, systems thinking, and 0-to-1 execution across AI-native workflows, enterprise-grade quality, and protocol-heavy environments.",
     proofPoints: [
       "Built Argent X from zero to 300,000+ Chrome users with 5.0 stars across 89,500 ratings.",
       "Co-developed starknet.js as core contributor and authored major v3 architecture work for ~115K weekly downloads.",
       "Bootstrapped Vesu to $50M+ TVL as founding engineer.",
       "Shipped production systems at 7M+ monthly active user scale at Joyn.",
       "Contributor to widely used TypeScript and web infrastructure projects including Next.js and viem.",
+      "Built and published AI infrastructure including an MCP gateway (aimux) and AI-powered automation tooling.",
     ],
     focusAreas: [
       "Web3 and blockchain product architecture",
@@ -93,13 +104,14 @@ export const PORTFOLIO: PortfolioData = {
       "Browser extension architecture",
       "Full-stack product engineering",
       "Smart wallet, account abstraction, and protocol-heavy UX",
-      "AI-native engineering workflows",
+      "AI-native engineering workflows and MCP infrastructure",
     ],
     availableFor: [
-      "Freelance product builds",
-      "Consulting and architecture review",
+      "Freelance product builds and consulting",
+      "Full-time permanent roles — especially Staff / Principal Engineer positions with strong ownership and AI-native culture",
+      "Architecture review and technical strategy",
       "Open-source strategy and delivery",
-      "Technical mentoring",
+      "Technical mentoring and team enablement",
       "Wallet, protocol, and developer-tooling work",
     ],
   },
@@ -378,6 +390,13 @@ export const toMarkdownCv = () => {
 
 ${PORTFOLIO.profile.summary}
 
+## Location & Languages
+- Location: ${PORTFOLIO.profile.location}
+${PORTFOLIO.profile.languages.map((l) => `- ${l.language}: ${l.level}`).join("\n")}
+
+## Availability
+${PORTFOLIO.profile.availability}
+
 ## Proof points
 ${toMarkdownList(PORTFOLIO.profile.proofPoints)}
 
@@ -389,6 +408,9 @@ ${openSource}
 
 ## Skills
 ${skills}
+
+## Open to
+${toMarkdownList(PORTFOLIO.profile.availableFor)}
 
 ## Contact
 - Email: ${PORTFOLIO.contact.email}
