@@ -1,15 +1,19 @@
 #!/usr/bin/env bun
 
 /**
- * Generate a printable CV PDF from /cv and place it in public/cv.pdf.
+ * Generate printable CV PDFs from /cv and place them in public/.
+ *
+ * Produces:
+ *   - public/cv.pdf     (Web3 variant)
+ *   - public/cv-ai.pdf  (AI variant)
  */
 import { spawn } from "node:child_process";
 import { dirname } from "node:path";
+import { CV_AI_PDF_PATH, CV_PDF_PATH } from "../lib/paths";
 import { setTimeout as delay } from "node:timers/promises";
 import { chromium } from "playwright";
 import { runScript } from "../lib/error-handler";
 import { ensureDirectory } from "../lib/fs-utils";
-import { CV_PDF_PATH } from "../lib/paths";
 
 const EXTERNAL_BASE_URL =
   process.env.CV_PDF_BASE_URL ?? "http://127.0.0.1:3000";
@@ -108,9 +112,6 @@ async function main() {
 
     const externalCvUrl = `${EXTERNAL_BASE_URL}/cv`;
     const canUseExternalServer = await canReach(externalCvUrl);
-    const cvUrl = canUseExternalServer
-      ? externalCvUrl
-      : `${INTERNAL_BASE_URL}/cv`;
 
     const server = canUseExternalServer
       ? null
@@ -140,25 +141,37 @@ async function main() {
 
     let browser: Awaited<ReturnType<typeof chromium.launch>> | null = null;
 
+    const variants = [
+      { variant: "web3", path: CV_PDF_PATH },
+      { variant: "ai", path: CV_AI_PDF_PATH },
+    ] as const;
+
+    const baseUrl = canUseExternalServer
+      ? EXTERNAL_BASE_URL
+      : INTERNAL_BASE_URL;
+
     try {
       if (server) {
-        await waitForServer(cvUrl, 120_000);
+        await waitForServer(`${baseUrl}/cv`, 120_000);
       }
 
       browser = await launchBrowser();
       const context = await browser.newContext();
       const page = await context.newPage();
 
-      await page.goto(cvUrl, { waitUntil: "networkidle", timeout: 120_000 });
-      await page.emulateMedia({ media: "print" });
-      await page.pdf({
-        path: CV_PDF_PATH,
-        format: "A4",
-        printBackground: true,
-        preferCSSPageSize: true,
-      });
-
-      console.log(`\n✅ CV generated at ${CV_PDF_PATH}`);
+      for (const { variant, path } of variants) {
+        const url = `${baseUrl}/cv?variant=${variant}`;
+        console.log(`\n📄 Generating ${variant} CV → ${path}`);
+        await page.goto(url, { waitUntil: "networkidle", timeout: 120_000 });
+        await page.emulateMedia({ media: "print" });
+        await page.pdf({
+          path,
+          format: "A4",
+          printBackground: true,
+          preferCSSPageSize: true,
+        });
+        console.log(`✅ ${variant} CV generated at ${path}`);
+      }
     } finally {
       if (browser) {
         await browser.close();

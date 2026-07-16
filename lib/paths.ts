@@ -20,3 +20,4 @@ export const APPLE_TOUCH_ICON_PATH = "./public/apple-touch-icon.png";
 export const WEBMANIFEST_PATH = "./public/site.webmanifest";
 export const OG_IMAGE_PATH = "./public/images/og-image.png";
 export const CV_PDF_PATH = "./public/cv.pdf";
+export const CV_AI_PDF_PATH = "./public/cv-ai.pdf";

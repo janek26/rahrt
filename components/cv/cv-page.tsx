@@ -1,8 +1,9 @@
 "use client";
 
-import { CV_CONTACTS, CV_DATA } from "@/components/cv/cv-data";
+import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { CV_CONTACTS, CV_VARIANT_LIST, CV_VARIANTS } from "@/components/cv/cv-data";
 import { cn } from "@/lib/utils";
-
 const PAPER_NOISE_DATA_URI = `url("data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'>
     <filter id='noiseFilter'>
@@ -37,10 +38,70 @@ function renderRichText(text: string) {
   });
 }
 
+function CvVariantTabBar({
+  active,
+}: {
+  active: string;
+}) {
+  const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+
+  const buildHref = useCallback(
+    (id: string) => {
+      if (!params) return `/cv?variant=${id}`;
+      const next = new URLSearchParams(params);
+      next.set("variant", id);
+      return `/cv?${next.toString()}`;
+    },
+    [params],
+  );
+
+  return (
+    <nav
+      className="cv-variant-tabs mx-auto mb-6 flex w-full max-w-5xl justify-center print:hidden"
+      aria-label="CV Variants"
+    >
+      <div className="border-foreground/10 bg-background/60 inline-flex rounded-full border p-1 shadow-[0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur">
+        {CV_VARIANT_LIST.map((variant) => (
+          <a
+            key={variant.id}
+            href={buildHref(variant.id)}
+            className={cn(
+              "inline-flex items-center gap-2 rounded-full px-5 py-2 font-mono text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-200 ease-out",
+              active === variant.id
+                ? "bg-foreground text-background shadow-[0_4px_14px_rgba(0,0,0,0.12)]"
+                : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]",
+            )}
+          >
+            {variant.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+function readVariant(): string {
+  if (typeof window === "undefined") return CV_VARIANT_LIST[0].id;
+  const params = new URLSearchParams(window.location.search);
+  const variant = params.get("variant");
+  if (variant && CV_VARIANTS[variant]) return variant;
+  return CV_VARIANT_LIST[0].id;
+}
+
 export function CvPage() {
+  const [variantId, setVariantId] = useState(CV_VARIANT_LIST[0].id);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setVariantId(readVariant());
+  }, []);
+
+  const data = CV_VARIANTS[variantId];
+
   return (
     <div className="cv-print-root px-3 pt-4 pb-10 transition-colors duration-300 sm:px-6 sm:pt-5 sm:pb-12 print:min-h-0 print:bg-white print:p-0">
       <div className="cv-print-container mx-auto flex w-full max-w-5xl flex-col items-center gap-0 print:max-w-none print:gap-0">
+        <CvVariantTabBar active={variantId} />
         <article
           className="cv-sheet relative w-full overflow-hidden border border-[#d7dde6] bg-[#fbfcfd] print:border-0 print:bg-white"
           style={{
@@ -69,10 +130,10 @@ export function CvPage() {
                   Janek Rahrt
                 </h1>
                 <div className="flex items-center gap-2 text-sm text-[#5c6673]">
-                  <span className="text-[#292c31]">{CV_DATA.role}</span>
+                  <span className="text-[#292c31]">{data.role}</span>
                   <span>·</span>
-                  <span style={{ color: CV_DATA.accent }}>
-                    {CV_DATA.domain}
+                  <span style={{ color: data.accent }}>
+                    {data.domain}
                   </span>
                 </div>
                 <p className="mt-2 text-xs tracking-wide text-[#6b7280]">
@@ -108,14 +169,72 @@ export function CvPage() {
             </div>
 
             <div className="mt-6 border-t border-[#dce3ea] pt-5 text-sm leading-7 tracking-[0.01em] text-[#2a2f36] print:mt-2 print:pt-1.5 print:text-[11px] print:leading-[1.3]">
-              {renderRichText(CV_DATA.profile)}
+              {renderRichText(data.profile)}
             </div>
           </header>
+          {variantId === "ai" && (
+            <div className="relative mx-8 mb-6 flex items-center gap-4 rounded-xl bg-[#f4f7fb] px-5 py-3.5 md:mx-12 print:mx-7 print:mb-2 print:gap-2 print:rounded-lg print:px-4 print:py-2 print:text-[9px]">
+              <div className="flex-1 min-w-0">
+                <p className="mb-1 font-mono text-[0.58rem] font-semibold tracking-[0.22em] uppercase text-[#6b7a8d] print:text-[7px] print:mb-0.5">
+                  Ask an AI about me
+                </p>
+                <code className="block select-all text-[0.72rem] leading-relaxed font-medium tracking-[0.01em] text-[#1f2937] print:text-[8px] print:leading-[1.4]">
+                  claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp
+                </code>
+              </div>
+              <motion.button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    "claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+                  );
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                animate={
+                  copied
+                    ? { borderColor: "#a7d1b3", backgroundColor: "#ecf8ef" }
+                    : { borderColor: "#cdd6e1", backgroundColor: "#ffffff" }
+                }
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="print:hidden shrink-0 w-[4.25rem] rounded-lg border px-0 py-2 font-mono text-[0.58rem] font-semibold tracking-[0.14em] uppercase shadow-[0_2px_6px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.07)] active:scale-[0.97]"
+                aria-label="Copy MCP command"
+                title="Copy command"
+                whileHover={{ borderColor: copied ? "#a7d1b3" : "#94a3b8" }}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied ? (
+                    <motion.span
+                      key="copied"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="text-[#2d7a46]"
+                    >
+                      Copied
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="text-[#475569]"
+                    >
+                      Copy
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </div>
+          )}
 
           <div className="relative space-y-8 px-8 pt-6 pb-10 md:px-12 print:space-y-3 print:px-7 print:pt-3 print:pb-3">
             <CvSectionLabel title="Experience" />
             <div className="space-y-4 print:space-y-1.5">
-              {CV_DATA.experiences.map((experience) => (
+              {data.experiences.map((experience) => (
                 <div
                   key={`${experience.company}-${experience.period}`}
                   className={cn(
@@ -132,7 +251,7 @@ export function CvPage() {
                         </h2>
                         <span
                           className="text-sm font-medium"
-                          style={{ color: CV_DATA.accent }}
+                          style={{ color: data.accent }}
                         >
                           {experience.role}
                         </span>
@@ -164,13 +283,10 @@ export function CvPage() {
             <section className="cv-print-section cv-print-open-source">
               <CvSectionLabel title="Open Source" />
               <div className="grid gap-x-5 gap-y-1 md:grid-cols-3 print:gap-x-3 print:gap-y-0">
-                {CV_DATA.openSource.map((item, index) => (
+                {data.openSource.map((item) => (
                   <div
                     key={item.name}
-                    className={cn(
-                      "cv-print-item space-y-1 border-b border-[#e2e8ef] py-3 print:py-1.5",
-                      index >= 3 && "md:border-b-0"
-                    )}
+                    className="cv-print-item space-y-1 py-3 print:py-1.5"
                   >
                     <div className="flex flex-wrap items-baseline gap-2">
                       <h3 className="text-sm font-semibold text-[#1f2937]">
@@ -178,7 +294,7 @@ export function CvPage() {
                       </h3>
                       <span
                         className="text-[11px] font-medium"
-                        style={{ color: CV_DATA.accent }}
+                        style={{ color: data.accent }}
                       >
                         {item.stat}
                       </span>
@@ -194,7 +310,7 @@ export function CvPage() {
             <section className="cv-print-section">
               <CvSectionLabel title="Skills" />
               <div className="grid gap-4 md:grid-cols-5 print:gap-1">
-                {CV_DATA.skills.map((skill) => (
+                {data.skills.map((skill) => (
                   <div key={skill.area} className="cv-print-item">
                     <h3 className="text-[10px] font-bold tracking-[0.13em] text-[#707b88] uppercase">
                       {skill.area}
@@ -209,7 +325,7 @@ export function CvPage() {
 
             <section className="cv-print-section">
               <div className="grid gap-8 border-t border-[#e2e8ef] pt-8 md:grid-cols-[1.5fr_1fr_1fr] print:gap-2.5 print:pt-2.5">
-                {CV_DATA.footer.map((column) => (
+                {data.footer.map((column) => (
                   <div key={column.label} className="cv-print-item">
                     <h3 className="mb-2 text-[10px] font-bold tracking-[0.16em] text-[#707b88] uppercase">
                       {column.label}

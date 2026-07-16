@@ -4,13 +4,26 @@ import { Download, Moon, Printer, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { CV_VARIANT_LIST, CV_VARIANTS } from "@/components/cv/cv-data";
 
 const ACTION_CLASSES =
   "flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-background/65 text-primary shadow-[0_8px_24px_rgba(0,0,0,0.06)] backdrop-blur transition-[transform,border-color,background-color] duration-[160ms] ease-out hover:border-accent/45 hover:bg-accent/[0.1] active:scale-[0.97] dark:text-accent dark:hover:border-accent/75 dark:hover:bg-accent/[0.22]";
+function readVariant(): string {
+  if (typeof window === "undefined") return CV_VARIANT_LIST[0].id;
+  const params = new URLSearchParams(window.location.search);
+  const variant = params.get("variant");
+  if (variant && CV_VARIANTS[variant]) return variant;
+  return CV_VARIANT_LIST[0].id;
+}
 
 export function CvToolbar() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [variantId, setVariantId] = useState(CV_VARIANT_LIST[0].id);
+
+  useEffect(() => {
+    setVariantId(readVariant());
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -26,6 +39,8 @@ export function CvToolbar() {
 
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  const isAi = variantId === "ai";
 
   return (
     <div className="print:hidden">
@@ -50,8 +65,8 @@ export function CvToolbar() {
           </button>
 
           <a
-            href="/cv.pdf"
-            download="janek-rahrt-cv.pdf"
+            href={isAi ? "/cv-ai.pdf" : "/cv.pdf"}
+            download={isAi ? "janek-rahrt-cv-ai.pdf" : "janek-rahrt-cv.pdf"}
             className={ACTION_CLASSES}
             aria-label="Download CV PDF"
             title="Download PDF"
