@@ -2,8 +2,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
-import { CV_CONTACTS, CV_VARIANT_LIST, CV_VARIANTS } from "@/components/cv/cv-data";
+import {
+  CV_CONTACTS,
+  CV_VARIANT_LIST,
+  CV_VARIANTS,
+} from "@/components/cv/cv-data";
 import { cn } from "@/lib/utils";
+
 const PAPER_NOISE_DATA_URI = `url("data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'>
     <filter id='noiseFilter'>
@@ -38,12 +43,11 @@ function renderRichText(text: string) {
   });
 }
 
-function CvVariantTabBar({
-  active,
-}: {
-  active: string;
-}) {
-  const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+function CvVariantTabBar({ active }: { active: string }) {
+  const params =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
 
   const buildHref = useCallback(
     (id: string) => {
@@ -52,7 +56,7 @@ function CvVariantTabBar({
       next.set("variant", id);
       return `/cv?${next.toString()}`;
     },
-    [params],
+    [params]
   );
 
   return (
@@ -69,7 +73,7 @@ function CvVariantTabBar({
               "inline-flex items-center gap-2 rounded-full px-5 py-2 font-mono text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-200 ease-out",
               active === variant.id
                 ? "bg-foreground text-background shadow-[0_4px_14px_rgba(0,0,0,0.12)]"
-                : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]",
+                : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]"
             )}
           >
             {variant.label}
@@ -132,9 +136,7 @@ export function CvPage() {
                 <div className="flex items-center gap-2 text-sm text-[#5c6673]">
                   <span className="text-[#292c31]">{data.role}</span>
                   <span>·</span>
-                  <span style={{ color: data.accent }}>
-                    {data.domain}
-                  </span>
+                  <span style={{ color: data.accent }}>{data.domain}</span>
                 </div>
                 <p className="mt-2 text-xs tracking-wide text-[#6b7280]">
                   Remote, based in Germany
@@ -174,19 +176,20 @@ export function CvPage() {
           </header>
           {variantId === "ai" && (
             <div className="cv-ai-banner relative mx-8 mb-6 flex items-center gap-4 rounded-xl bg-[#f4f7fb] px-5 py-3.5 md:mx-12 print:mx-7 print:mb-2 print:gap-2 print:rounded-lg print:px-4 print:py-2 print:text-[9px]">
-              <div className="flex-1 min-w-0">
-                <p className="mb-1 font-mono text-[0.58rem] font-semibold tracking-[0.22em] uppercase text-[#6b7a8d] print:text-[7px] print:mb-0.5">
+              <div className="min-w-0 flex-1">
+                <p className="mb-1 font-mono text-[0.58rem] font-semibold tracking-[0.22em] text-[#6b7a8d] uppercase print:mb-0.5 print:text-[7px]">
                   Ask an AI about me
                 </p>
-                <code className="block select-all text-[0.72rem] leading-relaxed font-medium tracking-[0.01em] text-[#1f2937] print:text-[8px] print:leading-[1.4]">
-                  claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp
+                <code className="block text-[0.72rem] leading-relaxed font-medium tracking-[0.01em] text-[#1f2937] select-all print:text-[8px] print:leading-[1.4]">
+                  claude mcp add janek-portfolio -- npx -y mcp-remote
+                  https://rahrt-portfolio-mcp-production.up.railway.app/mcp
                 </code>
               </div>
               <motion.button
                 type="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    "claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp",
+                    "claude mcp add janek-portfolio -- npx -y mcp-remote https://rahrt-portfolio-mcp-production.up.railway.app/mcp"
                   );
                   setCopied(true);
                   setTimeout(() => setCopied(false), 2000);
@@ -197,7 +200,7 @@ export function CvPage() {
                     : { borderColor: "#cdd6e1", backgroundColor: "#ffffff" }
                 }
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="print:hidden shrink-0 w-[4.25rem] rounded-lg border px-0 py-2 font-mono text-[0.58rem] font-semibold tracking-[0.14em] uppercase shadow-[0_2px_6px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.07)] active:scale-[0.97]"
+                className="w-[4.25rem] shrink-0 rounded-lg border px-0 py-2 font-mono text-[0.58rem] font-semibold tracking-[0.14em] uppercase shadow-[0_2px_6px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.07)] active:scale-[0.97] print:hidden"
                 aria-label="Copy MCP command"
                 title="Copy command"
                 whileHover={{ borderColor: copied ? "#a7d1b3" : "#94a3b8" }}

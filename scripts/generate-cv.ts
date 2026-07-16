@@ -9,11 +9,11 @@
  */
 import { spawn } from "node:child_process";
 import { dirname } from "node:path";
-import { CV_AI_PDF_PATH, CV_PDF_PATH } from "../lib/paths";
 import { setTimeout as delay } from "node:timers/promises";
 import { chromium } from "playwright";
 import { runScript } from "../lib/error-handler";
 import { ensureDirectory } from "../lib/fs-utils";
+import { CV_AI_PDF_PATH, CV_PDF_PATH } from "../lib/paths";
 
 const EXTERNAL_BASE_URL =
   process.env.CV_PDF_BASE_URL ?? "http://127.0.0.1:3000";

@@ -20,7 +20,15 @@ const MatchOpportunitySchema = defineSchema({
 const keywordGroups = [
   {
     label: "TypeScript and product engineering",
-    terms: ["typescript", "react", "next", "node", "frontend", "full-stack", "fullstack"],
+    terms: [
+      "typescript",
+      "react",
+      "next",
+      "node",
+      "frontend",
+      "full-stack",
+      "fullstack",
+    ],
     evidence: [
       "Built production TypeScript/React browser extensions and full-stack product surfaces at scale.",
       "Contributed to TypeScript-heavy open-source projects including starknet.js, viem, and Next.js.",
@@ -65,7 +73,16 @@ const keywordGroups = [
   },
   {
     label: "Open source and developer tooling",
-    terms: ["open source", "oss", "library", "sdk", "developer", "tooling", "npm", "api design"],
+    terms: [
+      "open source",
+      "oss",
+      "library",
+      "sdk",
+      "developer",
+      "tooling",
+      "npm",
+      "api design",
+    ],
     evidence: [
       "Maintained and contributed to ecosystem-standard libraries and SDKs.",
       "Built @argent/get-starknet for dApp-to-wallet integration (~8,200 weekly downloads).",
@@ -122,12 +139,12 @@ const MAX_POSSIBLE_SCORE = keywordGroups.length;
 const scoreGroup = (text: string, group: (typeof keywordGroups)[number]) =>
   group.terms.reduce(
     (score, term) => (text.includes(term) ? score + 1 : score),
-    0,
+    0
   );
 
 const projectScore = (
   project: (typeof PORTFOLIO.featuredProjects)[number],
-  text: string,
+  text: string
 ) =>
   keywordGroups.reduce(
     (score, group) =>
@@ -148,7 +165,7 @@ const projectScore = (
           ? groupScore + 1
           : groupScore;
       }, 0),
-    0,
+    0
   );
 
 class MatchOpportunityTool extends MCPTool {
@@ -174,7 +191,9 @@ class MatchOpportunityTool extends MCPTool {
       .sort((left, right) => right.score - left.score);
 
     const groupsThatMatched = scoredGroups.length;
-    const fitPercent = Math.round((groupsThatMatched / MAX_POSSIBLE_SCORE) * 100);
+    const fitPercent = Math.round(
+      (groupsThatMatched / MAX_POSSIBLE_SCORE) * 100
+    );
 
     const strengths =
       scoredGroups.length > 0
@@ -215,7 +234,7 @@ class MatchOpportunityTool extends MCPTool {
             : PORTFOLIO.featuredProjects.slice(0, 3),
         differentiators: PORTFOLIO.profile.proofPoints,
         languages: PORTFOLIO.profile.languages.map(
-          (l) => `${l.language} (${l.level})`,
+          (l) => `${l.language} (${l.level})`
         ),
         availability: PORTFOLIO.profile.availability,
         suggestedFollowUps: [
@@ -251,7 +270,7 @@ class MatchOpportunityTool extends MCPTool {
           : PORTFOLIO.featuredProjects.slice(0, 3),
       differentiators: PORTFOLIO.profile.proofPoints,
       languages: PORTFOLIO.profile.languages.map(
-        (l) => `${l.language} (${l.level})`,
+        (l) => `${l.language} (${l.level})`
       ),
       availability: PORTFOLIO.profile.availability,
       suggestedFollowUps: [

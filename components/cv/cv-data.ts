@@ -52,8 +52,17 @@ export interface CvData {
 }
 
 export const CV_VARIANT_LIST: CvVariant[] = [
-  { id: "web3", label: "Web3", description: "Web3, crypto, and protocol engineering" },
-  { id: "ai", label: "AI", description: "AI-native engineering, MCP infrastructure, agent-driven development" },
+  {
+    id: "web3",
+    label: "Web3",
+    description: "Web3, crypto, and protocol engineering",
+  },
+  {
+    id: "ai",
+    label: "AI",
+    description:
+      "AI-native engineering, MCP infrastructure, agent-driven development",
+  },
 ];
 
 export const CV_VARIANTS: Record<string, CvData> = {
@@ -117,7 +126,8 @@ export const CV_VARIANTS: Record<string, CvData> = {
       {
         name: "Argent X",
         stat: "638 stars",
-        description: "First Starknet browser wallet, built and scaled end-to-end",
+        description:
+          "First Starknet browser wallet, built and scaled end-to-end",
       },
       {
         name: "Next.js",
