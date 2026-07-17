@@ -162,7 +162,13 @@ async function main() {
       for (const { variant, path } of variants) {
         const url = `${baseUrl}/cv?variant=${variant}`;
         console.log(`\n📄 Generating ${variant} CV → ${path}`);
+        await page.emulateMedia({ media: "screen" });
         await page.goto(url, { waitUntil: "networkidle", timeout: 120_000 });
+        await page.waitForSelector(`.cv-sheet[data-variant="${variant}"]`, {
+          state: "visible",
+          timeout: 120_000,
+        });
+        await page.evaluate(() => document.fonts.ready);
         await page.emulateMedia({ media: "print" });
         await page.pdf({
           path,
