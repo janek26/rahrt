@@ -18,7 +18,7 @@ import { CV_AI_PDF_PATH, CV_PDF_PATH } from "../lib/paths";
 const EXTERNAL_BASE_URL =
   process.env.CV_PDF_BASE_URL ?? "http://127.0.0.1:3000";
 const DEV_PORT = Number(process.env.CV_PDF_PORT ?? "4173");
-const INTERNAL_BASE_URL = `http://127.0.0.1:${DEV_PORT}`;
+const INTERNAL_BASE_URL = `http://localhost:${DEV_PORT}`;
 
 const waitForServer = async (url: string, timeoutMs: number): Promise<void> => {
   const start = Date.now();
