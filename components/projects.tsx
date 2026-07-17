@@ -33,7 +33,7 @@ const projects = [
   {
     title: "starknet.js",
     description:
-      "Co-developed the ecosystem’s core JavaScript library, authored major v3 architecture and modernization work.",
+      "Co-developed the ecosystem's core JavaScript library, authored major v3 architecture and modernization work.",
     role: "Maintainer & Core Contributor",
     focus: "Core Library",
     impact: "~115K weekly downloads · standard Starknet developer tooling",

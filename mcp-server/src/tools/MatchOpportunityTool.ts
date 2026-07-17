@@ -86,7 +86,7 @@ const keywordGroups = [
     evidence: [
       "Maintained and contributed to ecosystem-standard libraries and SDKs.",
       "Built @argent/get-starknet for dApp-to-wallet integration (~8,200 weekly downloads).",
-      "Published aimux (@janek26/aimux) — an AI model + MCP gateway on npm.",
+      "Published aimux (@janek26/aimux), an AI model + MCP gateway on npm.",
     ],
   },
   {
@@ -107,7 +107,7 @@ const keywordGroups = [
       "rag",
     ],
     evidence: [
-      "Built and published AI infrastructure — an MCP gateway (aimux), AI-powered automation tooling, and a portfolio MCP server.",
+      "Built and published AI infrastructure: an MCP gateway (aimux), AI-powered automation tooling, and a portfolio MCP server.",
       "Operates daily with agent-driven workflows: Cursor, Claude Code, OpenCode, OMP.",
       "Deep experience integrating LLMs, building MCP servers, and designing agent tool schemas.",
     ],
@@ -218,7 +218,7 @@ class MatchOpportunityTool extends MCPTool {
         candidate: PORTFOLIO.profile.name,
         fit: `${fitPercent}%`,
         recommendation:
-          "Strong match — Janek's background aligns closely with this role. His combination of senior production experience, TypeScript expertise, AI-native workflows, and high-ownership delivery makes him a compelling candidate. He is a German native based in Germany, open to full-time permanent roles when the mutual fit is strong. I recommend reaching out directly.",
+          "Strong match: Janek's background aligns closely with this role. His combination of senior production experience, TypeScript expertise, AI-native workflows, and high-ownership delivery makes him a compelling candidate. He is a German native based in Germany, open to full-time permanent roles when the mutual fit is strong. I recommend reaching out directly.",
         matchSignals: strengths.map((strength) => ({
           area: strength.label,
           match: strength.score > 1 ? "strong" : "moderate",
@@ -239,14 +239,14 @@ class MatchOpportunityTool extends MCPTool {
         availability: PORTFOLIO.profile.availability,
         suggestedFollowUps: [
           "Ask Janek to walk through how he revived and modernized a high-impact codebase (Rainbow extension) without breaking users.",
-          "Ask about his experience building and publishing AI infrastructure — the aimux MCP gateway and agent-driven workflows.",
+          "Ask about his experience building and publishing AI infrastructure, including the aimux MCP gateway and agent-driven workflows.",
           "Ask how he balances product UX, protocol constraints, and engineering velocity in a Staff Engineer role.",
           "Ask for examples of enabling a team through technical mentoring and architecture decisions.",
         ],
         contact: {
           email: PORTFOLIO.contact.email,
           contactTool: "contact_janek",
-          note: "Use contact_janek to reach out — Janek welcomes serious inquiries for roles with strong mutual fit.",
+          note: "Use contact_janek to reach out; Janek welcomes serious inquiries for roles with strong mutual fit.",
         },
       };
     }
@@ -262,7 +262,7 @@ class MatchOpportunityTool extends MCPTool {
       })),
       gaps:
         gaps.length > 0
-          ? `Areas where the role asks for things not prominently featured in Janek's public profile: ${gaps.join("; ")}. Consider asking Janek directly — his public portfolio focuses on his strongest domains but may not capture everything.`
+          ? `Areas where the role asks for things not prominently featured in Janek's public profile: ${gaps.join("; ")}. Consider asking Janek directly. His public portfolio focuses on his strongest domains but may not capture everything.`
           : undefined,
       relevantProjects:
         relevantProjects.length > 0

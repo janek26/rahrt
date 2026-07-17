@@ -33,13 +33,13 @@ export function About() {
             </h2>
             <div className="text-muted-foreground space-y-5 text-lg leading-relaxed md:text-xl">
               <p>
-                I’m a product-minded staff engineer with 8+ years shipping
+                I'm a product-minded staff engineer with 8+ years shipping
                 user-facing products and developer infrastructure end-to-end.
                 The work spans browser extensions, TypeScript libraries,
                 protocol integrations, and full-stack systems.
               </p>
               <p>
-                I’m strongest where product quality and deep technical systems
+                I'm strongest where product quality and deep technical systems
                 meet: wallet transaction flows, dApp connector APIs, library
                 architecture, account abstraction, and fast 0-to-1 execution.
               </p>

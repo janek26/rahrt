@@ -78,9 +78,9 @@ export const CV_VARIANTS: Record<string, CvData> = {
         role: "Staff Engineer",
         period: "Jul 2025 - Present",
         bullets: [
-          "**Revived the Rainbow browser extension** after an extended period without an active maintainer — modernized the codebase and restored shipping velocity on **one of the most-used Ethereum wallet extensions**",
-          "Shipped **EIP-7702** support — the upgrade that lets standard Ethereum wallets temporarily act as smart accounts, unlocking **batched transactions, gas sponsorship, and session keys** without forcing users to migrate accounts",
-          "Shipped **EIP-5792** support — the dApp-to-wallet capability standard that collapses multi-step flows (*approve + swap*, *mint + stake*) into a **single confirmation**, a major UX shift for the wider ecosystem",
+          "**Revived the Rainbow browser extension** after an extended period without an active maintainer: modernized the codebase and restored shipping velocity on **one of the most-used Ethereum wallet extensions**",
+          "Shipped **EIP-7702** support, an upgrade that lets standard Ethereum wallets temporarily act as smart accounts, unlocking **batched transactions, gas sponsorship, and session keys** without forcing users to migrate accounts",
+          "Shipped **EIP-5792** support for the dApp-to-wallet capability standard, collapsing multi-step flows (*approve + swap*, *mint + stake*) into a **single confirmation** and marking a major UX shift for the wider ecosystem",
           "Owning the extension's transaction pipeline end-to-end: dApp connector APIs, signing infrastructure, and product UX across the wallet surface",
         ],
       },
@@ -204,9 +204,9 @@ export const CV_VARIANTS: Record<string, CvData> = {
         role: "Staff Engineer",
         period: "Jul 2025 - Present",
         bullets: [
-          "**Revived the Rainbow browser extension** after an extended period without an active maintainer — modernized the codebase and restored shipping velocity using **AI-native workflows** on **one of the most-used Ethereum wallet extensions**",
-          "Shipped **EIP-7702** and **EIP-5792** support — drove complex protocol implementations with agent-assisted development, collapsing multi-step dApp flows into single confirmations",
-          "Owning the extension's transaction pipeline end-to-end: dApp connector APIs, signing infrastructure, and product UX — all developed within an **agent-driven engineering loop**",
+          "**Revived the Rainbow browser extension** after an extended period without an active maintainer: modernized the codebase and restored shipping velocity using **AI-native workflows** on **one of the most-used Ethereum wallet extensions**",
+          "Shipped **EIP-7702** and **EIP-5792** support, driving complex protocol implementations with agent-assisted development and collapsing multi-step dApp flows into single confirmations",
+          "Owning the extension's transaction pipeline end-to-end: dApp connector APIs, signing infrastructure, and product UX, all developed within an **agent-driven engineering loop**",
         ],
       },
       {
@@ -214,9 +214,9 @@ export const CV_VARIANTS: Record<string, CvData> = {
         role: "Senior Engineer · Lead Engineer",
         period: "Aug 2021 - Jul 2025",
         bullets: [
-          "Built Argent X from zero to **300,000+ Chrome users** with 5.0 stars across 89,500 ratings — full-stack ownership of extension UI, service workers, and dApp connector APIs",
-          "Co-developed **starknet.js** as core contributor; authored major v3 architecture; scaled to **~115K weekly downloads** — the ecosystem's standard TypeScript library",
-          "Authored wallet connection standards and built **@argent/get-starknet** (~8,200 weekly downloads) — progressively adopted AI tooling as the workflow matured",
+          "Built Argent X from zero to **300,000+ Chrome users** with 5.0 stars across 89,500 ratings; owned full-stack delivery of extension UI, service workers, and dApp connector APIs",
+          "Co-developed **starknet.js** as core contributor; authored major v3 architecture; scaled it to **~115K weekly downloads** as the ecosystem's standard TypeScript library",
+          "Authored wallet connection standards and built **@argent/get-starknet** (~8,200 weekly downloads), progressively adopting AI tooling as the workflow matured",
         ],
       },
       {
@@ -245,7 +245,7 @@ export const CV_VARIANTS: Record<string, CvData> = {
         name: "aimux",
         stat: "npm · @janek26/aimux",
         description:
-          "AI model + MCP gateway — unifies LLM providers and MCP servers behind one OpenAI-compatible endpoint. macOS LaunchAgent, Linux systemd.",
+          "AI model + MCP gateway that unifies LLM providers and MCP servers behind one OpenAI-compatible endpoint. macOS LaunchAgent, Linux systemd.",
       },
       {
         name: "Next.js",
@@ -289,8 +289,8 @@ export const CV_VARIANTS: Record<string, CvData> = {
       {
         label: "AI Projects",
         lines: [
-          "Built **invoice-corp** — agentic invoice automation with browser-use, Playwright, Effect, and Cloudflare Workers",
-          "Built **holyway** — AI SaaS starter with TanStack AI streaming, MCP tools, and Polar payments",
+          "Built **invoice-corp**, an agentic invoice automation system with browser-use, Playwright, Effect, and Cloudflare Workers",
+          "Built **holyway**, an AI SaaS starter with TanStack AI streaming, MCP tools, and Polar payments",
           "Built a **travel planner prototype** with CopilotKit, A2UI, and OpenRouter Responses",
         ],
       },

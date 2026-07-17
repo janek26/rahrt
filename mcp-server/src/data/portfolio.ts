@@ -108,7 +108,7 @@ export const PORTFOLIO: PortfolioData = {
     ],
     availableFor: [
       "Freelance product builds and consulting",
-      "Full-time permanent roles — especially Staff / Principal Engineer positions with strong ownership and AI-native culture",
+      "Full-time permanent roles, especially Staff / Principal Engineer positions with strong ownership and AI-native culture",
       "Architecture review and technical strategy",
       "Open-source strategy and delivery",
       "Technical mentoring and team enablement",
